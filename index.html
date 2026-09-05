@@ -1,2736 +1,4147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
 
-<title>MyTown360 | Connecting Communities</title>
-
-<meta name="description"
-      content="MyTown360 - A digital community ecosystem connecting towns, citizens, businesses and opportunities across Botswana.">
-
-<meta name="theme-color" content="#00c2ff">
-
-<link rel="manifest" href="/manifest.json">
-
-<style>
-
-/* =========================================================
-   MYTOWN360
-   MASTER DESIGN SYSTEM
-========================================================= */
-
-:root {
-    --accent: #00c2ff;
-    --accent-rgb: 0,194,255;
-    --accent-secondary: #00ffb3;
-
-    --bg: #050b14;
-    --bg-secondary: #081321;
-
-    --card: rgba(15,31,49,.78);
-    --card-solid: #0f1f31;
-
-    --text: #ffffff;
-    --muted: #94a3b8;
-
-    --border: rgba(255,255,255,.09);
-
-    --success: #22c55e;
-    --warning: #f59e0b;
-    --danger: #ef4444;
-
-    --shadow:
-        0 20px 60px rgba(0,0,0,.35);
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-/* =========================================================
-   RESET
-========================================================= */
+    <title>MyTown360 | The Digital Front Door to Your Town</title>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family:
-        Inter,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(var(--accent-rgb),.09),
-            transparent 35%
-        ),
-        var(--bg);
-
-    color: var(--text);
-    overflow-x: hidden;
-}
-
-button,
-select {
-    font-family: inherit;
-}
-
-/* =========================================================
-   GLOBAL
-========================================================= */
+    <meta
+        name="description"
+        content="MyTown360 connects communities, businesses, opportunities, services, tourism and local leadership through one digital town platform."
+    >
 
-.container {
-    width: min(1180px,92%);
-    margin: auto;
-}
+    <meta name="theme-color" content="#11100E">
 
-.section {
-    padding: 100px 0;
-}
+    <link rel="manifest" href="/manifest.json">
 
-.section-heading {
-    text-align: center;
-    max-width: 720px;
-    margin: 0 auto 55px;
-}
-
-.section-heading .eyebrow {
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: .78rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-.section-heading h2 {
-    font-size: clamp(2rem,5vw,3rem);
-    margin-bottom: 15px;
-}
-
-.section-heading p {
-    color: var(--muted);
-    line-height: 1.8;
-}
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MyTown360">
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+    <style>
 
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+        /* =========================================================
+           ROOT
+        ========================================================= */
 
-    padding: 17px 0;
+        :root {
 
-    background: rgba(5,11,20,.76);
+            --bg: #11100E;
+            --bg-2: #171512;
+            --bg-3: #1C1814;
 
-    backdrop-filter: blur(18px);
+            --card: rgba(35, 30, 24, .82);
+            --card-solid: #231E18;
 
-    border-bottom:
-        1px solid var(--border);
+            --brand: #F4B942;
+            --brand-dark: #C99120;
 
-    transition: .3s;
-}
+            --terracotta: #E76F51;
+            --terracotta-dark: #B84D34;
 
-.nav-inner {
-    width: min(1200px,92%);
-    margin: auto;
+            --ivory: #FFF8E7;
+            --text: #F7F0E2;
+            --muted: #B9AD99;
+            --muted-dark: #887E70;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+            --emerald: #2FBF71;
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+            --border: rgba(255, 248, 231, .09);
+            --border-gold: rgba(244, 185, 66, .28);
 
-    text-decoration: none;
-    color: white;
+            --shadow:
+                0 25px 70px rgba(0, 0, 0, .35);
 
-    font-size: 1.35rem;
-    font-weight: 800;
-    letter-spacing: -.5px;
-}
+            --radius: 22px;
+            --radius-sm: 14px;
 
-.logo-mark {
-    width: 38px;
-    height: 38px;
+            --max-width: 1240px;
 
-    border-radius: 12px;
+            --nav-height: 78px;
 
-    display: grid;
-    place-items: center;
+            --town-accent: #F4B942;
+            --town-rgb: 244, 185, 66;
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--accent),
-            var(--accent-secondary)
-        );
+        }
 
-    color: #001018;
 
-    font-weight: 900;
+        /* =========================================================
+           RESET
+        ========================================================= */
 
-    box-shadow:
-        0 0 25px rgba(var(--accent-rgb),.35);
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-.logo span {
-    color: var(--accent);
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.nav-links {
-    display: flex;
-    gap: 28px;
-}
+        body {
 
-.nav-links a {
-    color: #d7e2ed;
-    text-decoration: none;
-    font-size: .92rem;
-    transition: .25s;
-}
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
 
-.nav-links a:hover {
-    color: var(--accent);
-}
+            background:
+                radial-gradient(
+                    circle at 15% 15%,
+                    rgba(244,185,66,.08),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 85% 35%,
+                    rgba(231,111,81,.07),
+                    transparent 28%
+                ),
+                var(--bg);
 
-.nav-actions {
-    display: flex;
-    gap: 10px;
-}
+            color: var(--text);
 
-.nav-btn {
-    border: 1px solid var(--border);
+            line-height: 1.6;
 
-    background: rgba(255,255,255,.04);
+            overflow-x: hidden;
+        }
 
-    color: white;
 
-    padding: 9px 15px;
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-    border-radius: 10px;
 
-    cursor: pointer;
-}
+        button,
+        select {
+            font: inherit;
+        }
 
-.nav-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-}
 
-/* =========================================================
-   HERO
-========================================================= */
+        button {
+            cursor: pointer;
+        }
 
-.hero {
-    min-height: 100vh;
 
-    position: relative;
+        img {
+            max-width: 100%;
+            display: block;
+        }
 
-    display: flex;
-    align-items: center;
 
-    overflow: hidden;
+        ::selection {
+            background: var(--brand);
+            color: #11100E;
+        }
 
-    padding:
-        140px 0
-        100px;
-}
 
-.hero::before {
-    content: "";
+        /* =========================================================
+           UTILITIES
+        ========================================================= */
 
-    position: absolute;
+        .container {
 
-    width: 650px;
-    height: 650px;
+            width: min(
+                calc(100% - 40px),
+                var(--max-width)
+            );
 
-    left: 50%;
-    top: 45%;
+            margin-inline: auto;
+        }
 
-    transform:
-        translate(-50%,-50%);
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(var(--accent-rgb),.14),
-            transparent 68%
-        );
+        .section {
 
-    pointer-events: none;
-}
+            padding: 110px 0;
 
-/* =========================================================
-   DIGITAL GRID
-========================================================= */
+            position: relative;
+        }
 
-.grid-background {
-    position: absolute;
-    inset: 0;
 
-    opacity: .25;
+        .section-heading {
 
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.035) 1px,
-            transparent 1px
-        );
+            max-width: 720px;
 
-    background-size: 55px 55px;
+            margin-bottom: 55px;
+        }
 
-    mask-image:
-        radial-gradient(
-            ellipse at center,
-            black,
-            transparent 75%
-        );
-}
 
-/* =========================================================
-   DIGITAL NETWORK
-========================================================= */
+        .eyebrow {
 
-.network {
-    position: absolute;
-    inset: 0;
+            display: inline-flex;
 
-    overflow: hidden;
+            align-items: center;
+            gap: 9px;
 
-    pointer-events: none;
-}
+            padding: 8px 13px;
 
-.network-node {
-    position: absolute;
+            border:
+                1px solid
+                var(--border-gold);
 
-    width: 10px;
-    height: 10px;
+            background:
+                rgba(244,185,66,.06);
 
-    border-radius: 50%;
+            color: var(--brand);
 
-    background: var(--accent);
+            border-radius: 999px;
 
-    box-shadow:
-        0 0 10px var(--accent),
-        0 0 25px var(--accent);
+            font-size: 11px;
 
-    animation:
-        nodePulse 2.5s infinite ease-in-out;
-}
+            font-weight: 800;
 
-.network-node::after {
-    content: "";
+            letter-spacing: .16em;
 
-    position: absolute;
-    inset: -8px;
+            text-transform: uppercase;
 
-    border:
-        1px solid
-        rgba(var(--accent-rgb),.25);
+            margin-bottom: 18px;
+        }
 
-    border-radius: 50%;
 
-    animation:
-        nodeRing 2.5s infinite;
-}
+        .eyebrow-dot {
 
-.network-line {
-    position: absolute;
+            width: 7px;
+            height: 7px;
 
-    height: 1px;
+            border-radius: 50%;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(var(--accent-rgb),.65),
-            transparent
-        );
+            background: var(--brand);
 
-    transform-origin: left center;
+            box-shadow:
+                0 0 0 4px rgba(244,185,66,.10);
+        }
 
-    opacity: .5;
 
-    animation:
-        dataFlow 3s infinite linear;
-}
+        .section-title {
 
-@keyframes nodePulse {
-    0%,100% {
-        transform: scale(.8);
-        opacity: .65;
-    }
+            font-size:
+                clamp(
+                    34px,
+                    5vw,
+                    58px
+                );
 
-    50% {
-        transform: scale(1.25);
-        opacity: 1;
-    }
-}
+            line-height: 1.05;
 
-@keyframes nodeRing {
-    0% {
-        transform: scale(.5);
-        opacity: .8;
-    }
+            letter-spacing: -.045em;
 
-    100% {
-        transform: scale(1.7);
-        opacity: 0;
-    }
-}
+            margin-bottom: 18px;
+        }
 
-@keyframes dataFlow {
-    0% {
-        opacity: .1;
-    }
 
-    50% {
-        opacity: .8;
-    }
+        .section-title span {
+            color: var(--brand);
+        }
 
-    100% {
-        opacity: .1;
-    }
-}
 
-/* =========================================================
-   HERO CONTENT
-========================================================= */
+        .section-description {
 
-.hero-content {
-    position: relative;
-    z-index: 5;
+            color: var(--muted);
 
-    width: 100%;
+            font-size: 17px;
 
-    text-align: center;
-}
+            max-width: 650px;
+        }
 
-.hero-badge {
-    display: inline-flex;
 
-    align-items: center;
-    gap: 8px;
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
 
-    padding: 8px 14px;
+        .navbar {
 
-    border:
-        1px solid
-        rgba(var(--accent-rgb),.25);
+            position: fixed;
 
-    background:
-        rgba(var(--accent-rgb),.07);
+            top: 0;
+            left: 0;
+            right: 0;
 
-    color: var(--accent);
+            height: var(--nav-height);
 
-    border-radius: 50px;
+            z-index: 1000;
 
-    font-size: .78rem;
-    font-weight: 700;
+            transition:
+                background .3s ease,
+                border-color .3s ease,
+                box-shadow .3s ease;
+        }
 
-    letter-spacing: 1px;
 
-    margin-bottom: 25px;
-}
+        .navbar.scrolled {
 
-.status-dot {
-    width: 7px;
-    height: 7px;
+            background:
+                rgba(17,16,14,.92);
 
-    background: var(--success);
+            backdrop-filter:
+                blur(18px);
 
-    border-radius: 50%;
+            border-bottom:
+                1px solid var(--border);
 
-    box-shadow:
-        0 0 10px var(--success);
-}
+            box-shadow:
+                0 15px 40px rgba(0,0,0,.18);
+        }
 
-.hero h1 {
-    font-size:
-        clamp(3rem,8vw,6.5rem);
 
-    line-height: .98;
+        .nav-inner {
 
-    letter-spacing: -4px;
+            height: 100%;
 
-    max-width: 1000px;
+            display: flex;
 
-    margin:
-        0 auto 25px;
-}
+            align-items: center;
 
-.hero h1 .accent {
-    color: var(--accent);
+            justify-content: space-between;
 
-    text-shadow:
-        0 0 50px
-        rgba(var(--accent-rgb),.25);
-}
+            gap: 30px;
+        }
 
-.hero-description {
-    max-width: 720px;
 
-    margin:
-        0 auto 35px;
+        /* LOGO */
 
-    color: var(--muted);
+        .logo {
 
-    font-size:
-        clamp(1rem,2vw,1.15rem);
+            display: flex;
 
-    line-height: 1.8;
-}
+            align-items: center;
 
-/* =========================================================
-   TOWN SELECTOR
-========================================================= */
+            gap: 11px;
 
-.town-selector-wrapper {
-    display: flex;
-    justify-content: center;
+            flex-shrink: 0;
+        }
 
-    margin-bottom: 25px;
-}
 
-.town-selector {
-    position: relative;
-}
+        .logo-mark {
 
-.town-selector label {
-    display: block;
+            width: 42px;
+            height: 42px;
 
-    color: #8293a7;
+            border-radius: 13px;
 
-    font-size: .72rem;
+            display: grid;
 
-    text-transform: uppercase;
+            place-items: center;
 
-    letter-spacing: 2px;
+            position: relative;
 
-    margin-bottom: 8px;
-}
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--brand),
+                    #D89A2D
+                );
 
-.town-selector select {
-    appearance: none;
+            color: #11100E;
 
-    min-width: 270px;
+            font-weight: 950;
 
-    padding:
-        15px 48px 15px 18px;
+            font-size: 15px;
 
-    border:
-        1px solid
-        rgba(var(--accent-rgb),.3);
+            box-shadow:
+                0 8px 25px rgba(244,185,66,.20);
+        }
 
-    border-radius: 13px;
 
-    background:
-        rgba(15,31,49,.9);
+        .logo-mark::before {
 
-    color: white;
+            content: "";
 
-    font-size: 1rem;
+            position: absolute;
 
-    font-weight: 600;
+            inset: 5px;
 
-    outline: none;
+            border:
+                1px solid
+                rgba(17,16,14,.32);
 
-    cursor: pointer;
+            border-radius: 9px;
+        }
 
-    box-shadow:
-        0 10px 35px
-        rgba(0,0,0,.2);
-}
 
-.town-selector select:focus {
-    border-color: var(--accent);
+        .logo-text {
 
-    box-shadow:
-        0 0 0 3px
-        rgba(var(--accent-rgb),.12);
-}
+            font-size: 20px;
 
-.town-selector select option {
-    background: #0f1f31;
-    color: white;
-}
+            font-weight: 900;
 
-.select-arrow {
-    position: absolute;
+            letter-spacing: -.04em;
+        }
 
-    right: 18px;
-    bottom: 17px;
 
-    color: var(--accent);
+        .logo-text span {
+            color: var(--brand);
+        }
 
-    pointer-events: none;
-}
 
-/* =========================================================
-   BUTTONS
-========================================================= */
+        /* DESKTOP NAV */
 
-.hero-buttons {
-    display: flex;
+        .nav-links {
 
-    justify-content: center;
+            display: flex;
 
-    gap: 13px;
+            align-items: center;
 
-    flex-wrap: wrap;
-}
+            gap: 30px;
 
-.btn {
-    display: inline-flex;
+            margin-left: auto;
+        }
 
-    align-items: center;
 
-    justify-content: center;
+        .nav-links a {
 
-    gap: 9px;
+            color: var(--muted);
 
-    padding:
-        14px 23px;
+            font-size: 14px;
 
-    border-radius: 12px;
+            font-weight: 650;
 
-    font-size: .92rem;
+            transition: color .2s ease;
+        }
 
-    font-weight: 700;
 
-    cursor: pointer;
+        .nav-links a:hover {
+            color: var(--ivory);
+        }
 
-    transition:
-        transform .25s,
-        box-shadow .25s,
-        background .25s;
 
-    text-decoration: none;
-}
+        .nav-actions {
 
-.btn:hover {
-    transform: translateY(-3px);
-}
+            display: flex;
 
-.btn-primary {
-    background: var(--accent);
+            align-items: center;
 
-    color: #001018;
+            gap: 10px;
+        }
 
-    border: none;
 
-    box-shadow:
-        0 10px 35px
-        rgba(var(--accent-rgb),.25);
-}
+        /* BUTTONS */
 
-.btn-primary:hover {
-    box-shadow:
-        0 15px 45px
-        rgba(var(--accent-rgb),.4);
-}
+        .btn {
 
-.btn-secondary {
-    background:
-        rgba(255,255,255,.045);
+            display: inline-flex;
 
-    color: white;
+            align-items: center;
 
-    border:
-        1px solid var(--border);
-}
+            justify-content: center;
 
-.btn-secondary:hover {
-    border-color:
-        rgba(var(--accent-rgb),.4);
+            gap: 9px;
 
-    color: var(--accent);
-}
+            min-height: 46px;
 
-/* =========================================================
-   INSTALL BUTTON
-========================================================= */
+            padding:
+                0 18px;
 
-.install-btn {
-    display: none;
+            border-radius: 12px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #00c2ff,
-            #00ffb3
-        );
+            border: 1px solid transparent;
 
-    color: #001018;
+            font-size: 13px;
 
-    border: none;
+            font-weight: 800;
 
-    box-shadow:
-        0 10px 35px
-        rgba(0,194,255,.25);
-}
+            transition:
+                transform .2s ease,
+                background .2s ease,
+                border-color .2s ease,
+                box-shadow .2s ease;
+        }
 
-/* =========================================================
-   FLOATING SERVICE CARDS
-========================================================= */
 
-.hero-services {
-    display: flex;
+        .btn:hover {
+            transform: translateY(-2px);
+        }
 
-    justify-content: center;
 
-    gap: 10px;
+        .btn-primary {
 
-    flex-wrap: wrap;
+            background: var(--brand);
 
-    max-width: 850px;
+            color: #17130D;
 
-    margin:
-        45px auto 0;
-}
+            box-shadow:
+                0 10px 30px
+                rgba(244,185,66,.14);
+        }
 
-.service-pill {
-    display: flex;
 
-    align-items: center;
+        .btn-primary:hover {
 
-    gap: 7px;
+            background: #FFC95A;
 
-    padding: 9px 13px;
+            box-shadow:
+                0 15px 35px
+                rgba(244,185,66,.22);
+        }
 
-    border:
-        1px solid var(--border);
 
-    border-radius: 50px;
+        .btn-secondary {
 
-    background:
-        rgba(255,255,255,.035);
+            background:
+                rgba(255,248,231,.04);
 
-    color: #aebdcd;
+            color: var(--ivory);
 
-    font-size: .76rem;
+            border-color:
+                var(--border);
+        }
 
-    backdrop-filter: blur(8px);
-}
 
-.service-pill span {
-    color: var(--accent);
-}
+        .btn-secondary:hover {
 
-/* =========================================================
-   NETWORK LABELS
-========================================================= */
+            border-color:
+                var(--border-gold);
 
-.network-label {
-    position: absolute;
+            background:
+                rgba(244,185,66,.07);
+        }
 
-    z-index: 3;
 
-    font-size: .7rem;
+        .btn-terracotta {
 
-    color: rgba(255,255,255,.38);
+            background:
+                var(--terracotta);
 
-    letter-spacing: 1px;
+            color: white;
+        }
 
-    text-transform: uppercase;
-}
 
-.label-jwaneng {
-    left: 14%;
-    top: 29%;
-}
+        /* MOBILE MENU */
 
-.label-maun {
-    left: 25%;
-    top: 58%;
-}
+        .mobile-toggle {
 
-.label-gaborone {
-    right: 18%;
-    top: 27%;
-}
+            display: none;
 
-.label-francistown {
-    right: 10%;
-    top: 54%;
-}
+            width: 44px;
+            height: 44px;
 
-.label-palapye {
-    left: 45%;
-    top: 17%;
-}
+            border:
+                1px solid var(--border);
 
-.label-kasane {
-    right: 25%;
-    top: 15%;
-}
+            border-radius: 12px;
 
-.label-ghanzi {
-    left: 7%;
-    top: 45%;
-}
+            background:
+                rgba(255,255,255,.03);
 
-.label-serowe {
-    right: 7%;
-    top: 39%;
-}
+            color: var(--ivory);
 
-.label-orapa {
-    left: 36%;
-    top: 30%;
-}
+            font-size: 20px;
+        }
 
-/* =========================================================
-   STATS
-========================================================= */
 
-.stats-section {
-    position: relative;
-    z-index: 10;
+        .mobile-menu {
 
-    margin-top: -25px;
-}
+            display: none;
 
-.stats-grid {
-    display: grid;
+            position: fixed;
 
-    grid-template-columns:
-        repeat(4,1fr);
+            top: calc(var(--nav-height) + 10px);
 
-    gap: 15px;
-}
+            left: 20px;
+            right: 20px;
 
-.stat-card {
-    padding: 27px 20px;
+            padding: 20px;
 
-    background:
-        rgba(15,31,49,.72);
+            background:
+                rgba(28,24,20,.97);
 
-    border:
-        1px solid var(--border);
+            border:
+                1px solid var(--border);
 
-    border-radius: 18px;
+            border-radius: 20px;
 
-    text-align: center;
+            box-shadow:
+                var(--shadow);
 
-    backdrop-filter: blur(15px);
-}
+            z-index: 999;
+        }
 
-.stat-card h3 {
-    font-size: 2rem;
 
-    color: var(--accent);
+        .mobile-menu.active {
+            display: block;
+        }
 
-    margin-bottom: 5px;
-}
 
-.stat-card p {
-    color: var(--muted);
+        .mobile-menu a {
 
-    font-size: .82rem;
-}
+            display: block;
 
-/* =========================================================
-   SERVICES
-========================================================= */
+            padding: 13px 10px;
 
-.services-grid {
-    display: grid;
+            color: var(--muted);
 
-    grid-template-columns:
-        repeat(4,1fr);
+            border-bottom:
+                1px solid var(--border);
+        }
 
-    gap: 18px;
-}
 
-.service-card {
-    padding: 28px;
+        .mobile-menu a:last-of-type {
+            border-bottom: 0;
+        }
 
-    border:
-        1px solid var(--border);
 
-    border-radius: 20px;
+        .mobile-menu .btn {
+            width: 100%;
+            margin-top: 15px;
+        }
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(15,31,49,.95),
-            rgba(8,19,33,.8)
-        );
 
-    transition: .3s;
-}
+        /* =========================================================
+           HERO
+        ========================================================= */
 
-.service-card:hover {
-    transform: translateY(-7px);
+        .hero {
 
-    border-color:
-        rgba(var(--accent-rgb),.35);
+            min-height: 100vh;
 
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.25);
-}
+            position: relative;
 
-.service-icon {
-    width: 48px;
-    height: 48px;
+            display: flex;
 
-    border-radius: 14px;
+            align-items: center;
 
-    display: grid;
-    place-items: center;
+            overflow: hidden;
 
-    background:
-        rgba(var(--accent-rgb),.1);
+            padding:
+                150px 0
+                90px;
+        }
 
-    color: var(--accent);
 
-    font-size: 1.4rem;
+        /* MAP / TOPOGRAPHIC BACKGROUND */
 
-    margin-bottom: 20px;
-}
+        .hero::before {
 
-.service-card h3 {
-    margin-bottom: 9px;
-}
+            content: "";
 
-.service-card p {
-    color: var(--muted);
+            position: absolute;
 
-    font-size: .86rem;
+            inset: 0;
 
-    line-height: 1.65;
-}
+            opacity: .30;
 
-/* =========================================================
-   TOWNS
-========================================================= */
+            background-image:
 
-.towns-section {
-    background:
-        linear-gradient(
-            180deg,
-            transparent,
-            rgba(255,255,255,.015)
-        );
-}
+                linear-gradient(
+                    30deg,
+                    transparent 48%,
+                    rgba(244,185,66,.08) 49%,
+                    transparent 50%
+                ),
 
-.towns-grid {
-    display: grid;
+                linear-gradient(
+                    150deg,
+                    transparent 48%,
+                    rgba(231,111,81,.06) 49%,
+                    transparent 50%
+                );
 
-    grid-template-columns:
-        repeat(3,1fr);
+            background-size:
+                90px 90px;
 
-    gap: 15px;
-}
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent
+                );
+        }
 
-.town-card {
-    position: relative;
 
-    min-height: 190px;
+        .hero::after {
 
-    border:
-        1px solid var(--border);
+            content: "";
 
-    border-radius: 20px;
+            position: absolute;
 
-    overflow: hidden;
+            width: 700px;
+            height: 700px;
 
-    padding: 22px;
+            top: -300px;
+            right: -220px;
 
-    display: flex;
+            border-radius: 50%;
 
-    flex-direction: column;
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(244,185,66,.12),
+                    transparent 68%
+                );
 
-    justify-content: flex-end;
+            pointer-events: none;
+        }
 
-    background:
-        linear-gradient(
-            145deg,
-            #12283c,
-            #07111f
-        );
 
-    cursor: pointer;
+        .hero-content {
 
-    transition: .3s;
-}
+            position: relative;
 
-.town-card:hover {
-    transform: translateY(-7px);
+            z-index: 5;
 
-    border-color:
-        var(--town-color);
+            width: 100%;
+        }
 
-    box-shadow:
-        0 15px 45px
-        rgba(0,0,0,.3);
-}
 
-.town-card::before {
-    content: "";
+        .hero-grid {
 
-    position: absolute;
+            display: grid;
 
-    width: 120px;
-    height: 120px;
+            grid-template-columns:
+                minmax(0, 1.1fr)
+                minmax(420px, .9fr);
 
-    right: -35px;
-    top: -35px;
+            gap: 70px;
 
-    border-radius: 50%;
+            align-items: center;
+        }
 
-    background:
-        var(--town-color);
 
-    opacity: .12;
+        .hero-copy {
+            max-width: 760px;
+        }
 
-    filter: blur(10px);
-}
 
-.town-color {
-    width: 8px;
-    height: 8px;
+        .hero-title {
 
-    border-radius: 50%;
+            font-size:
+                clamp(
+                    50px,
+                    7vw,
+                    92px
+                );
 
-    background:
-        var(--town-color);
+            line-height: .96;
 
-    box-shadow:
-        0 0 15px
-        var(--town-color);
+            letter-spacing:
+                -.065em;
 
-    margin-bottom: 12px;
-}
+            margin-bottom: 28px;
+        }
 
-.town-card h3 {
-    position: relative;
-    z-index: 2;
 
-    margin-bottom: 5px;
-}
+        .hero-title .gold {
+            color: var(--brand);
+        }
 
-.town-card p {
-    position: relative;
-    z-index: 2;
 
-    color: var(--muted);
+        .hero-title .terracotta {
+            color: var(--terracotta);
+        }
 
-    font-size: .76rem;
-}
 
-.town-badge {
-    position: absolute;
+        .hero-description {
 
-    top: 17px;
-    right: 17px;
+            max-width: 650px;
 
-    z-index: 3;
+            color: var(--muted);
 
-    font-size: .62rem;
+            font-size:
+                clamp(
+                    16px,
+                    2vw,
+                    19px
+                );
 
-    padding: 5px 8px;
+            line-height: 1.75;
 
-    border-radius: 20px;
+            margin-bottom: 32px;
+        }
 
-    color: var(--accent);
 
-    background:
-        rgba(var(--accent-rgb),.08);
+        .hero-actions {
 
-    border:
-        1px solid
-        rgba(var(--accent-rgb),.15);
-}
+            display: flex;
 
-/* =========================================================
-   JWANENG AREA
-========================================================= */
+            flex-wrap: wrap;
 
-.area-note {
-    margin-top: 25px;
+            gap: 12px;
 
-    padding: 22px;
+            margin-bottom: 34px;
+        }
 
-    border:
-        1px solid
-        rgba(var(--accent-rgb),.15);
 
-    border-radius: 18px;
+        .hero-services {
 
-    background:
-        rgba(var(--accent-rgb),.035);
+            display: flex;
 
-    text-align: center;
-}
+            flex-wrap: wrap;
 
-.area-note strong {
-    color: var(--accent);
-}
+            gap: 9px;
+        }
 
-.area-note p {
-    color: var(--muted);
 
-    margin-top: 8px;
+        .hero-service {
 
-    font-size: .85rem;
+            padding:
+                8px 11px;
 
-    line-height: 1.7;
-}
+            border-radius: 8px;
 
-/* =========================================================
-   COMMUNITY FEED
-========================================================= */
+            background:
+                rgba(255,248,231,.035);
 
-.feed-grid {
-    display: grid;
+            border:
+                1px solid var(--border);
 
-    grid-template-columns:
-        repeat(3,1fr);
+            color:
+                #C8BDAA;
 
-    gap: 18px;
-}
+            font-size: 11px;
 
-.feed-card {
-    padding: 25px;
+            font-weight: 750;
 
-    border:
-        1px solid var(--border);
+            text-transform: uppercase;
 
-    border-radius: 20px;
+            letter-spacing: .07em;
+        }
 
-    background:
-        var(--card);
-}
 
-.feed-tag {
-    display: inline-block;
+        /* =========================================================
+           HERO TOWN ORBIT
+        ========================================================= */
 
-    color: var(--accent);
+        .hero-visual {
 
-    font-size: .7rem;
+            min-height: 520px;
 
-    text-transform: uppercase;
+            position: relative;
 
-    letter-spacing: 1.5px;
+            display: grid;
 
-    font-weight: 700;
+            place-items: center;
+        }
 
-    margin-bottom: 15px;
-}
 
-.feed-card h3 {
-    font-size: 1.05rem;
+        .town-orbit {
 
-    line-height: 1.4;
+            width:
+                min(
+                    500px,
+                    85vw
+                );
 
-    margin-bottom: 12px;
-}
+            aspect-ratio: 1;
 
-.feed-card p {
-    color: var(--muted);
+            position: relative;
 
-    font-size: .82rem;
+            border-radius: 50%;
 
-    line-height: 1.6;
-}
+            border:
+                1px solid
+                rgba(244,185,66,.16);
 
-.feed-date {
-    display: block;
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(244,185,66,.055),
+                    rgba(255,255,255,.015) 45%,
+                    transparent 70%
+                );
+        }
 
-    margin-top: 18px;
 
-    color: #66788d;
+        .town-orbit::before {
 
-    font-size: .7rem;
-}
+            content: "";
 
-/* =========================================================
-   CTA
-========================================================= */
+            position: absolute;
 
-.cta-section {
-    padding: 90px 0;
-}
+            inset: 10%;
 
-.cta-box {
-    position: relative;
+            border-radius: 50%;
 
-    overflow: hidden;
+            border:
+                1px dashed
+                rgba(244,185,66,.14);
 
-    padding: 70px 35px;
+            animation:
+                rotateOrbit 30s linear infinite;
+        }
 
-    text-align: center;
 
-    border:
-        1px solid
-        rgba(var(--accent-rgb),.2);
+        .town-orbit::after {
 
-    border-radius: 28px;
+            content: "";
 
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(var(--accent-rgb),.1),
-            transparent 60%
-        ),
-        #0b1929;
-}
+            position: absolute;
 
-.cta-box h2 {
-    font-size:
-        clamp(2rem,5vw,3.2rem);
+            inset: 22%;
 
-    margin-bottom: 15px;
-}
+            border-radius: 50%;
 
-.cta-box p {
-    color: var(--muted);
+            border:
+                1px solid
+                rgba(231,111,81,.12);
+        }
 
-    max-width: 650px;
 
-    margin:
-        0 auto 28px;
+        @keyframes rotateOrbit {
 
-    line-height: 1.7;
-}
+            from {
+                transform: rotate(0deg);
+            }
 
-/* =========================================================
-   FOOTER
-========================================================= */
+            to {
+                transform: rotate(360deg);
+            }
 
-footer {
-    border-top:
-        1px solid var(--border);
+        }
 
-    padding: 55px 0 30px;
 
-    background:
-        #030811;
-}
+        .orbit-center {
 
-.footer-grid {
-    display: grid;
+            position: absolute;
 
-    grid-template-columns:
-        2fr 1fr 1fr 1fr;
+            left: 50%;
+            top: 50%;
 
-    gap: 40px;
+            transform:
+                translate(-50%, -50%);
 
-    margin-bottom: 45px;
-}
+            width: 155px;
+            height: 155px;
 
-.footer-brand p {
-    max-width: 380px;
+            border-radius: 50%;
 
-    color: var(--muted);
+            display: grid;
 
-    line-height: 1.7;
+            place-items: center;
 
-    margin-top: 15px;
+            text-align: center;
 
-    font-size: .85rem;
-}
+            background:
+                linear-gradient(
+                    145deg,
+                    #30271D,
+                    #171411
+                );
 
-.footer-column h4 {
-    margin-bottom: 17px;
+            border:
+                1px solid
+                var(--border-gold);
 
-    font-size: .85rem;
-}
+            box-shadow:
+                0 30px 70px rgba(0,0,0,.45),
+                inset 0 0 40px rgba(244,185,66,.05);
+        }
 
-.footer-column a {
-    display: block;
 
-    color: var(--muted);
+        .orbit-center strong {
 
-    text-decoration: none;
+            display: block;
 
-    margin-bottom: 10px;
+            font-size: 25px;
 
-    font-size: .8rem;
+            letter-spacing: -.05em;
 
-    transition: .2s;
-}
+            color: var(--ivory);
+        }
 
-.footer-column a:hover {
-    color: var(--accent);
-}
 
-.footer-bottom {
-    border-top:
-        1px solid var(--border);
+        .orbit-center span {
 
-    padding-top: 22px;
+            display: block;
 
-    display: flex;
+            margin-top: 3px;
 
-    justify-content: space-between;
+            font-size: 10px;
 
-    color: #596a7e;
+            font-weight: 800;
 
-    font-size: .72rem;
-}
+            text-transform: uppercase;
 
-/* =========================================================
-   MOBILE NAV
-========================================================= */
+            letter-spacing: .14em;
 
-.mobile-nav {
-    display: none;
-}
+            color: var(--brand);
+        }
 
-/* =========================================================
-   INSTALL BANNER
-========================================================= */
 
-.install-banner {
-    position: fixed;
+        .town-node {
 
-    bottom: 90px;
+            position: absolute;
 
-    left: 20px;
-    right: 20px;
+            display: flex;
 
-    display: none;
+            flex-direction: column;
 
-    align-items: center;
+            align-items: center;
 
-    justify-content: space-between;
+            gap: 7px;
 
-    gap: 15px;
+            transform: translate(-50%, -50%);
+        }
 
-    background:
-        linear-gradient(
-            135deg,
-            #0b1f3a,
-            #092b3e
-        );
 
-    border:
-        1px solid
-        rgba(79,195,247,.3);
+        .town-node-dot {
 
-    padding: 15px;
+            width: 14px;
+            height: 14px;
 
-    border-radius: 15px;
+            border-radius: 50%;
 
-    z-index: 99999;
+            background:
+                var(--brand);
 
-    box-shadow:
-        0 10px 30px
-        rgba(0,0,0,.4);
-}
+            border:
+                3px solid
+                #17130E;
 
-.install-banner strong {
-    display: block;
+            box-shadow:
+                0 0 0 5px
+                rgba(244,185,66,.13),
 
-    margin-bottom: 4px;
-}
+                0 0 25px
+                rgba(244,185,66,.35);
+        }
 
-.install-banner p {
-    font-size: 12px;
 
-    color: #cfd8dc;
-}
+        .town-node span {
 
-.install-banner button {
-    flex-shrink: 0;
+            padding:
+                5px 8px;
 
-    background:
-        #4fc3f7;
+            border-radius: 7px;
 
-    color:
-        #001f3f;
+            background:
+                rgba(17,16,14,.82);
 
-    border: none;
+            border:
+                1px solid var(--border);
 
-    padding:
-        10px 18px;
+            color:
+                #CFC3AF;
 
-    border-radius: 8px;
+            font-size: 10px;
 
-    font-weight: 700;
+            font-weight: 800;
 
-    cursor: pointer;
-}
+            letter-spacing: .06em;
+        }
 
-/* =========================================================
-   INSTALL STATUS
-========================================================= */
 
-.install-status {
-    position: fixed;
+        .node-jwaneng {
+            left: 50%;
+            top: 8%;
+        }
 
-    top: 85px;
-    right: 20px;
+        .node-gaborone {
+            left: 82%;
+            top: 28%;
+        }
 
-    z-index: 99998;
+        .node-francistown {
+            left: 88%;
+            top: 61%;
+        }
 
-    display: none;
+        .node-maun {
+            left: 65%;
+            top: 87%;
+        }
 
-    padding: 9px 13px;
+        .node-palapye {
+            left: 28%;
+            top: 88%;
+        }
 
-    border-radius: 30px;
+        .node-kasane {
+            left: 12%;
+            top: 60%;
+        }
 
-    background:
-        rgba(34,197,94,.12);
+        .node-ghanzi {
+            left: 18%;
+            top: 27%;
+        }
 
-    border:
-        1px solid
-        rgba(34,197,94,.25);
 
-    color:
-        #86efac;
+        /* =========================================================
+           PILOT BADGE
+        ========================================================= */
 
-    font-size: .72rem;
-}
+        .pilot-card {
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+            position: absolute;
 
-@media (max-width:1000px) {
+            bottom: 20px;
+            left: 0;
 
-    .services-grid {
-        grid-template-columns:
-            repeat(2,1fr);
-    }
+            width: 235px;
 
-    .towns-grid {
-        grid-template-columns:
-            repeat(3,1fr);
-    }
+            padding: 17px;
 
-    .stats-grid {
-        grid-template-columns:
-            repeat(2,1fr);
-    }
+            background:
+                rgba(35,30,24,.92);
 
-    .nav-links {
-        display: none;
-    }
+            border:
+                1px solid var(--border-gold);
 
-    .footer-grid {
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-}
+            border-radius: 16px;
 
-@media (max-width:650px) {
+            box-shadow:
+                0 20px 50px rgba(0,0,0,.3);
 
-    .section {
-        padding: 75px 0;
-    }
+            backdrop-filter:
+                blur(15px);
+        }
 
-    .hero {
-        min-height:
-            calc(100vh - 50px);
 
-        padding-top:
-            130px;
-    }
+        .pilot-card small {
 
-    .hero h1 {
-        letter-spacing: -2px;
-    }
+            display: block;
 
-    .hero-description {
-        font-size: .92rem;
-    }
+            color: var(--brand);
 
-    .network-label {
-        display: none;
-    }
+            font-size: 9px;
 
-    .services-grid {
-        grid-template-columns:
-            repeat(2,1fr);
+            font-weight: 900;
 
-        gap: 10px;
-    }
+            letter-spacing: .15em;
 
-    .service-card {
-        padding:
-            20px 15px;
-    }
+            text-transform: uppercase;
 
-    .towns-grid {
-        grid-template-columns:
-            repeat(2,1fr);
-    }
+            margin-bottom: 5px;
+        }
 
-    .feed-grid {
-        grid-template-columns:
-            1fr;
-    }
 
-    .stats-grid {
-        grid-template-columns:
-            repeat(2,1fr);
+        .pilot-card strong {
 
-        gap: 10px;
-    }
+            display: block;
 
-    .stat-card {
-        padding:
-            22px 10px;
-    }
+            color: var(--ivory);
 
-    .stat-card h3 {
-        font-size: 1.55rem;
-    }
+            font-size: 17px;
+        }
 
-    .footer-grid {
-        grid-template-columns:
-            1fr;
-    }
 
-    .footer-bottom {
-        flex-direction:
-            column;
+        .pilot-card p {
 
-        gap: 8px;
-    }
+            color: var(--muted);
 
-    .nav-actions {
-        display: none;
-    }
+            font-size: 11px;
 
-    .mobile-nav {
-        display: flex;
+            line-height: 1.5;
 
-        position: fixed;
+            margin-top: 5px;
+        }
 
-        bottom: 0;
-        left: 0;
 
-        width: 100%;
+        /* =========================================================
+           TOWN SELECTOR
+        ========================================================= */
 
-        z-index: 1000;
+        .town-selector-wrap {
 
-        background:
-            rgba(5,11,20,.94);
+            margin-top: 50px;
 
-        backdrop-filter:
-            blur(18px);
+            padding: 14px;
 
-        border-top:
-            1px solid var(--border);
+            max-width: 720px;
 
-        justify-content:
-            space-around;
+            border:
+                1px solid
+                var(--border);
 
-        padding:
-            9px 5px;
-    }
+            background:
+                rgba(255,248,231,.025);
 
-    .mobile-nav a {
-        text-decoration: none;
+            border-radius: 18px;
 
-        color: #738397;
+            display: flex;
 
-        text-align: center;
+            align-items: center;
 
-        font-size: .62rem;
-    }
+            gap: 12px;
+        }
 
-    .mobile-nav a span {
-        display: block;
 
-        font-size: 1.1rem;
+        .town-selector-label {
 
-        margin-bottom: 3px;
-    }
+            padding-left: 8px;
 
-    .mobile-nav a.active {
-        color: var(--accent);
-    }
+            color: var(--muted-dark);
 
-    body {
-        padding-bottom: 65px;
-    }
+            font-size: 10px;
 
-    .install-banner {
-        bottom: 78px;
-    }
+            font-weight: 900;
 
-    .town-selector select {
-        min-width: 240px;
-    }
-}
+            letter-spacing: .12em;
 
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
+            text-transform: uppercase;
 
-button:focus-visible,
-select:focus-visible,
-a:focus-visible {
-    outline:
-        2px solid var(--accent);
+            white-space: nowrap;
+        }
 
-    outline-offset: 3px;
-}
 
-</style>
+        .town-selector {
+
+            flex: 1;
+
+            min-height: 45px;
+
+            border:
+                1px solid
+                var(--border);
+
+            background:
+                #231E18;
+
+            color:
+                var(--ivory);
+
+            border-radius: 11px;
+
+            padding:
+                0 14px;
+
+            outline: none;
+
+            cursor: pointer;
+        }
+
+
+        .town-selector:focus {
+
+            border-color:
+                var(--brand);
+        }
+
+
+        /* =========================================================
+           STATS
+        ========================================================= */
+
+        .stats {
+
+            position: relative;
+
+            padding:
+                0 0 80px;
+        }
+
+
+        .stats-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            background:
+                rgba(255,248,231,.025);
+        }
+
+
+        .stat {
+
+            padding:
+                28px 25px;
+
+            border-right:
+                1px solid var(--border);
+        }
+
+
+        .stat:last-child {
+            border-right: 0;
+        }
+
+
+        .stat-number {
+
+            display: block;
+
+            color: var(--brand);
+
+            font-size: 30px;
+
+            font-weight: 950;
+
+            letter-spacing: -.04em;
+
+            margin-bottom: 3px;
+        }
+
+
+        .stat-label {
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            font-weight: 650;
+        }
+
+
+        /* =========================================================
+           SERVICES
+        ========================================================= */
+
+        .services-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 16px;
+        }
+
+
+        .service-card {
+
+            position: relative;
+
+            min-height: 250px;
+
+            padding: 25px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                var(--radius);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(35,30,24,.95),
+                    rgba(26,23,19,.80)
+                );
+
+            overflow: hidden;
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease,
+                background .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .service-card:hover {
+
+            transform:
+                translateY(-6px);
+
+            border-color:
+                var(--border-gold);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(42,35,27,.98),
+                    rgba(28,24,20,.9)
+                );
+
+            box-shadow:
+                0 25px 55px
+                rgba(0,0,0,.25);
+        }
+
+
+        .service-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 130px;
+            height: 130px;
+
+            right: -55px;
+            bottom: -55px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(244,185,66,.09),
+                    transparent 68%
+                );
+
+            transition:
+                transform .4s ease;
+        }
+
+
+        .service-card:hover::after {
+            transform: scale(1.5);
+        }
+
+
+        .service-number {
+
+            position: absolute;
+
+            top: 20px;
+            right: 22px;
+
+            color:
+                rgba(255,248,231,.13);
+
+            font-size: 12px;
+
+            font-weight: 900;
+        }
+
+
+        .service-icon {
+
+            width: 48px;
+            height: 48px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 14px;
+
+            background:
+                rgba(244,185,66,.08);
+
+            border:
+                1px solid
+                rgba(244,185,66,.15);
+
+            font-size: 21px;
+
+            margin-bottom: 28px;
+        }
+
+
+        .service-card h3 {
+
+            font-size: 19px;
+
+            letter-spacing: -.025em;
+
+            margin-bottom: 10px;
+        }
+
+
+        .service-card p {
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           TOWNS
+        ========================================================= */
+
+        .towns-section {
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    rgba(244,185,66,.025),
+                    transparent
+                );
+        }
+
+
+        .towns-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 17px;
+        }
+
+
+        .town-card {
+
+            position: relative;
+
+            min-height: 210px;
+
+            padding: 25px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            background:
+                #1B1814;
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease;
+        }
+
+
+        .town-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                rgba(
+                    var(--town-rgb),
+                    .38
+                );
+        }
+
+
+        .town-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            right: -65px;
+            bottom: -80px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(
+                        var(--town-rgb),
+                        .14
+                    ),
+                    transparent 68%
+                );
+        }
+
+
+        .town-monogram {
+
+            width: 54px;
+            height: 54px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 15px;
+
+            background:
+                rgba(
+                    var(--town-rgb),
+                    .09
+                );
+
+            border:
+                1px solid
+                rgba(
+                    var(--town-rgb),
+                    .25
+                );
+
+            color:
+                var(--town-color);
+
+            font-size: 20px;
+
+            font-weight: 950;
+
+            margin-bottom: 25px;
+        }
+
+
+        .town-card h3 {
+
+            font-size: 21px;
+
+            margin-bottom: 4px;
+
+            letter-spacing: -.03em;
+        }
+
+
+        .town-card p {
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            max-width: 240px;
+        }
+
+
+        .town-badge {
+
+            position: absolute;
+
+            top: 22px;
+            right: 22px;
+
+            padding:
+                5px 8px;
+
+            border-radius: 6px;
+
+            background:
+                rgba(244,185,66,.09);
+
+            border:
+                1px solid
+                rgba(244,185,66,.18);
+
+            color:
+                var(--brand);
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+        }
+
+
+        .town-arrow {
+
+            position: absolute;
+
+            bottom: 23px;
+            right: 23px;
+
+            width: 31px;
+            height: 31px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 9px;
+
+            background:
+                rgba(255,255,255,.035);
+
+            color: var(--muted);
+
+            transition:
+                background .2s ease,
+                color .2s ease;
+        }
+
+
+        .town-card:hover .town-arrow {
+
+            background:
+                rgba(
+                    var(--town-rgb),
+                    .12
+                );
+
+            color:
+                var(--town-color);
+        }
+
+
+        /* =========================================================
+           JWANENG PILOT FEATURE
+        ========================================================= */
+
+        .pilot-feature {
+
+            padding:
+                35px;
+
+            border-radius:
+                25px;
+
+            border:
+                1px solid
+                rgba(244,185,66,.20);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(244,185,66,.075),
+                    rgba(231,111,81,.035)
+                );
+
+            display: grid;
+
+            grid-template-columns:
+                1fr auto;
+
+            gap: 35px;
+
+            align-items: center;
+
+            margin-top: 22px;
+        }
+
+
+        .pilot-feature-label {
+
+            color: var(--brand);
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .15em;
+
+            margin-bottom: 8px;
+        }
+
+
+        .pilot-feature h3 {
+
+            font-size:
+                clamp(
+                    25px,
+                    4vw,
+                    38px
+                );
+
+            letter-spacing: -.045em;
+
+            margin-bottom: 10px;
+        }
+
+
+        .pilot-feature p {
+
+            max-width: 700px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+        }
+
+
+        .pilot-communities {
+
+            margin-top: 17px;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+
+        .pilot-community {
+
+            padding:
+                6px 9px;
+
+            border-radius: 7px;
+
+            background:
+                rgba(255,255,255,.04);
+
+            border:
+                1px solid var(--border);
+
+            color:
+                #BBAF9C;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           COMMUNITY PULSE
+        ========================================================= */
+
+        .pulse-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1.2fr .8fr .8fr;
+
+            gap: 16px;
+        }
+
+
+        .pulse-card {
+
+            min-height: 290px;
+
+            padding: 27px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 20px;
+
+            background:
+                #1C1915;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .pulse-card.featured {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(244,185,66,.11),
+                    rgba(35,30,24,.9)
+                );
+
+            border-color:
+                rgba(244,185,66,.20);
+        }
+
+
+        .pulse-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 45px;
+        }
+
+
+        .pulse-type {
+
+            color: var(--brand);
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+        }
+
+
+        .pulse-date {
+
+            color: var(--muted-dark);
+
+            font-size: 10px;
+        }
+
+
+        .pulse-card h3 {
+
+            font-size: 23px;
+
+            line-height: 1.15;
+
+            letter-spacing: -.035em;
+
+            margin-bottom: 12px;
+        }
+
+
+        .pulse-card p {
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        .pulse-link {
+
+            position: absolute;
+
+            bottom: 24px;
+            left: 27px;
+
+            color: var(--brand);
+
+            font-size: 11px;
+
+            font-weight: 850;
+        }
+
+
+        /* =========================================================
+           CTA
+        ========================================================= */
+
+        .cta-section {
+
+            padding:
+                80px 0 120px;
+        }
+
+
+        .cta {
+
+            position: relative;
+
+            padding:
+                70px 60px;
+
+            border-radius: 30px;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #292219,
+                    #1B1713
+                );
+
+            border:
+                1px solid
+                rgba(244,185,66,.18);
+
+            text-align: center;
+
+            box-shadow:
+                0 35px 80px
+                rgba(0,0,0,.28);
+        }
+
+
+        .cta::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            top: -300px;
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(244,185,66,.14),
+                    transparent 67%
+                );
+        }
+
+
+        .cta h2 {
+
+            position: relative;
+
+            font-size:
+                clamp(
+                    35px,
+                    5vw,
+                    61px
+                );
+
+            line-height: 1;
+
+            letter-spacing: -.055em;
+
+            margin-bottom: 18px;
+        }
+
+
+        .cta h2 span {
+            color: var(--brand);
+        }
+
+
+        .cta p {
+
+            position: relative;
+
+            max-width: 650px;
+
+            margin:
+                0 auto 28px;
+
+            color: var(--muted);
+
+            font-size: 16px;
+        }
+
+
+        .cta-actions {
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+
+            padding:
+                65px 0 30px;
+
+            border-top:
+                1px solid var(--border);
+
+            background:
+                #0E0D0B;
+        }
+
+
+        .footer-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1.6fr
+                1fr
+                1fr
+                1fr;
+
+            gap: 45px;
+
+            padding-bottom: 55px;
+        }
+
+
+        .footer-brand p {
+
+            max-width: 340px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            margin-top: 17px;
+        }
+
+
+        .footer-column h4 {
+
+            color:
+                var(--ivory);
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .13em;
+
+            margin-bottom: 17px;
+        }
+
+
+        .footer-column a {
+
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            margin-bottom: 11px;
+
+            transition: color .2s ease;
+        }
+
+
+        .footer-column a:hover {
+            color: var(--brand);
+        }
+
+
+        .footer-bottom {
+
+            padding-top: 25px;
+
+            border-top:
+                1px solid var(--border);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            color:
+                var(--muted-dark);
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================================
+           INSTALL BANNER
+        ========================================================= */
+
+        .install-banner {
+
+            position: fixed;
+
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+
+            z-index: 1200;
+
+            max-width: 580px;
+
+            margin: auto;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding:
+                15px 17px;
+
+            border:
+                1px solid
+                var(--border-gold);
+
+            border-radius: 16px;
+
+            background:
+                rgba(28,24,20,.97);
+
+            backdrop-filter:
+                blur(20px);
+
+            box-shadow:
+                0 25px 60px
+                rgba(0,0,0,.45);
+        }
+
+
+        .install-banner.show {
+            display: flex;
+        }
+
+
+        .install-text strong {
+
+            display: block;
+
+            font-size: 13px;
+
+            margin-bottom: 2px;
+        }
+
+
+        .install-text span {
+
+            color: var(--muted);
+
+            font-size: 10px;
+        }
+
+
+        .install-actions {
+
+            display: flex;
+
+            gap: 7px;
+        }
+
+
+        .install-actions button {
+
+            min-height: 36px;
+
+            padding:
+                0 12px;
+
+            border-radius: 9px;
+
+            border: 0;
+
+            font-size: 10px;
+
+            font-weight: 850;
+        }
+
+
+        .install-button {
+
+            background: var(--brand);
+
+            color: #11100E;
+        }
+
+
+        .install-close {
+
+            background:
+                rgba(255,255,255,.06);
+
+            color: var(--muted);
+        }
+
+
+        /* =========================================================
+           MOBILE BOTTOM NAV
+        ========================================================= */
+
+        .mobile-bottom-nav {
+
+            display: none;
+
+            position: fixed;
+
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+
+            height: 62px;
+
+            z-index: 1100;
+
+            background:
+                rgba(24,21,17,.95);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 18px;
+
+            backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,.35);
+        }
+
+
+        .mobile-bottom-nav-inner {
+
+            height: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+        }
+
+
+        .bottom-nav-item {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 3px;
+
+            color: var(--muted-dark);
+
+            font-size: 9px;
+
+            font-weight: 750;
+        }
+
+
+        .bottom-nav-item span:first-child {
+            font-size: 17px;
+        }
+
+
+        .bottom-nav-item.active {
+            color: var(--brand);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1050px) {
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                min-height: 470px;
+            }
+
+            .hero-copy {
+                max-width: 850px;
+            }
+
+            .services-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .towns-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .pulse-grid {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .pulse-card.featured {
+                grid-column:
+                    span 2;
+            }
+
+            .footer-grid {
+                grid-template-columns:
+                    1.5fr
+                    1fr
+                    1fr;
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            :root {
+                --nav-height: 70px;
+            }
+
+            .container {
+                width:
+                    min(
+                        calc(100% - 28px),
+                        var(--max-width)
+                    );
+            }
+
+            .nav-links,
+            .nav-actions {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .hero {
+                padding:
+                    120px 0 70px;
+            }
+
+            .hero-title {
+                font-size:
+                    clamp(
+                        47px,
+                        14vw,
+                        72px
+                    );
+            }
+
+            .hero-visual {
+                min-height: 390px;
+            }
+
+            .town-orbit {
+                width:
+                    min(
+                        390px,
+                        92vw
+                    );
+            }
+
+            .pilot-card {
+                left: 5px;
+                bottom: 0;
+            }
+
+            .stats-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .stat:nth-child(2) {
+                border-right: 0;
+            }
+
+            .stat:nth-child(-n+2) {
+                border-bottom:
+                    1px solid var(--border);
+            }
+
+            .town-selector-wrap {
+                align-items:
+                    stretch;
+
+                flex-direction:
+                    column;
+            }
+
+            .town-selector-label {
+                padding-left: 2px;
+            }
+
+            .pilot-feature {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .footer-brand {
+                grid-column:
+                    span 2;
+            }
+
+            .mobile-bottom-nav {
+                display: block;
+            }
+
+            footer {
+                padding-bottom: 100px;
+            }
+
+        }
+
+
+        @media (max-width: 560px) {
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+            }
+
+            .hero-services {
+                gap: 6px;
+            }
+
+            .hero-service {
+                font-size: 9px;
+            }
+
+            .hero-visual {
+                min-height: 350px;
+            }
+
+            .town-orbit {
+                width: 330px;
+            }
+
+            .orbit-center {
+                width: 120px;
+                height: 120px;
+            }
+
+            .orbit-center strong {
+                font-size: 20px;
+            }
+
+            .town-node span {
+                font-size: 8px;
+            }
+
+            .town-node-dot {
+                width: 11px;
+                height: 11px;
+            }
+
+            .pilot-card {
+                width: 190px;
+                padding: 13px;
+            }
+
+            .pilot-card strong {
+                font-size: 14px;
+            }
+
+            .services-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .service-card {
+                min-height: 210px;
+            }
+
+            .towns-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .pulse-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .pulse-card.featured {
+                grid-column:
+                    auto;
+            }
+
+            .cta {
+                padding:
+                    50px 22px;
+            }
+
+            .footer-grid {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .footer-brand {
+                grid-column:
+                    span 2;
+            }
+
+            .footer-bottom {
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+            }
+
+            .install-banner {
+                bottom: 85px;
+            }
+
+        }
+
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<!-- ======================================================
-     NAVIGATION
-====================================================== -->
 
-<header class="navbar">
+<!-- =============================================================
+     NAVBAR
+============================================================= -->
 
-<div class="nav-inner">
+<header class="navbar" id="navbar">
 
-<a href="#" class="logo">
+    <div class="container nav-inner">
 
-<div class="logo-mark">
-    360
-</div>
+        <a href="#home" class="logo">
 
-<div>
-    MyTown<span>360</span>
-</div>
+            <div class="logo-mark">
+                360
+            </div>
 
-</a>
+            <div class="logo-text">
+                MyTown<span>360</span>
+            </div>
 
-<nav class="nav-links">
+        </a>
 
-<a href="#services">
-    Services
-</a>
 
-<a href="#towns">
-    Towns
-</a>
+        <nav class="nav-links">
 
-<a href="#updates">
-    Updates
-</a>
+            <a href="#services">
+                Services
+            </a>
 
-<a href="#about">
-    About
-</a>
+            <a href="#towns">
+                Towns
+            </a>
 
-</nav>
+            <a href="#updates">
+                Updates
+            </a>
 
-<div class="nav-actions">
+            <a href="#about">
+                About
+            </a>
 
-<button
-    class="nav-btn"
-    onclick="scrollToSection('towns')">
-    Explore Towns
-</button>
+        </nav>
 
-<button
-    class="nav-btn"
-    onclick="scrollToSection('updates')">
-    Live Updates
-</button>
 
-</div>
+        <div class="nav-actions">
 
-</div>
+            <button
+                class="btn btn-secondary"
+                onclick="scrollToSection('updates')"
+            >
+                Live Updates
+            </button>
+
+            <button
+                class="btn btn-primary"
+                onclick="scrollToSection('towns')"
+            >
+                Explore Towns
+            </button>
+
+        </div>
+
+
+        <button
+            class="mobile-toggle"
+            id="mobileToggle"
+            aria-label="Open navigation"
+        >
+            ☰
+        </button>
+
+    </div>
 
 </header>
 
 
-<!-- ======================================================
+<!-- MOBILE MENU -->
+
+<div
+    class="mobile-menu"
+    id="mobileMenu"
+>
+
+    <a href="#home">
+        Home
+    </a>
+
+    <a href="#services">
+        Services
+    </a>
+
+    <a href="#towns">
+        Towns
+    </a>
+
+    <a href="#updates">
+        Updates
+    </a>
+
+    <a href="#about">
+        About
+    </a>
+
+    <button
+        class="btn btn-primary"
+        onclick="scrollToSection('towns')"
+    >
+        Explore Towns
+    </button>
+
+</div>
+
+
+<!-- =============================================================
      HERO
-====================================================== -->
+============================================================= -->
+
+<main id="home">
 
 <section class="hero">
 
-<div class="grid-background"></div>
+    <div class="container hero-content">
 
-<div class="network" id="network"></div>
+        <div class="hero-grid">
 
-<!-- NETWORK LABELS -->
 
-<div class="network-label label-jwaneng">
-    Jwaneng
-</div>
+            <!-- HERO COPY -->
 
-<div class="network-label label-maun">
-    Maun
-</div>
+            <div class="hero-copy">
 
-<div class="network-label label-gaborone">
-    Gaborone
-</div>
+                <div class="eyebrow">
 
-<div class="network-label label-francistown">
-    Francistown
-</div>
+                    <span class="eyebrow-dot"></span>
 
-<div class="network-label label-palapye">
-    Palapye
-</div>
+                    Digital Town Network
 
-<div class="network-label label-kasane">
-    Kasane
-</div>
+                </div>
 
-<div class="network-label label-ghanzi">
-    Ghanzi
-</div>
 
-<div class="network-label label-serowe">
-    Serowe
-</div>
+                <h1 class="hero-title">
 
-<div class="network-label label-orapa">
-    Orapa
-</div>
+                    Your Town.
+                    <br>
 
+                    <span class="gold">
+                        Connected.
+                    </span>
 
-<div class="container">
+                    <br>
 
-<div class="hero-content">
+                    <span class="terracotta">
+                        Digitally.
+                    </span>
 
-<div class="hero-badge">
+                </h1>
 
-<div class="status-dot"></div>
 
-SMART COMMUNITY NETWORK
+                <p class="hero-description">
 
-</div>
+                    MyTown360 is a digital community ecosystem
+                    connecting citizens, businesses, opportunities,
+                    services, tourism, safety and local leadership
+                    through one connected town platform.
 
+                </p>
 
-<h1>
 
-Connecting
+                <div class="hero-actions">
 
-<span class="accent">
-Communities.
-</span>
+                    <button
+                        class="btn btn-primary"
+                        onclick="scrollToSection('towns')"
+                    >
+                        Explore Your Town
+                        <span>→</span>
+                    </button>
 
-<br>
 
-Empowering
+                    <button
+                        class="btn btn-secondary"
+                        onclick="installMyTown360()"
+                        id="heroInstallButton"
+                    >
+                        Install MyTown360
+                    </button>
 
-<span class="accent">
-Towns.
-</span>
 
-</h1>
+                    <button
+                        class="btn btn-secondary"
+                        onclick="scrollToSection('updates')"
+                    >
+                        Latest Updates
+                    </button>
 
+                </div>
 
-<p class="hero-description">
 
-MyTown360 is a digital community ecosystem
-connecting citizens, businesses, opportunities,
-services, tourism and local leadership through
-one connected platform.
+                <div class="hero-services">
 
-</p>
+                    <span class="hero-service">
+                        News
+                    </span>
 
+                    <span class="hero-service">
+                        Jobs
+                    </span>
 
-<!-- TOWN SELECTOR -->
+                    <span class="hero-service">
+                        Businesses
+                    </span>
 
-<div class="town-selector-wrapper">
+                    <span class="hero-service">
+                        Events
+                    </span>
 
-<div class="town-selector">
+                    <span class="hero-service">
+                        Tourism
+                    </span>
 
-<label for="townSelector">
-    Select Your Town
-</label>
+                    <span class="hero-service">
+                        Safety
+                    </span>
 
-<select id="townSelector">
+                    <span class="hero-service">
+                        Community
+                    </span>
 
-<option value="jwaneng">
-    Jwaneng
-</option>
+                </div>
 
-<option value="gaborone">
-    Gaborone
-</option>
 
-<option value="francistown">
-    Francistown
-</option>
+                <!-- TOWN SELECTOR -->
 
-<option value="maun">
-    Maun
-</option>
+                <div class="town-selector-wrap">
 
-<option value="palapye">
-    Palapye
-</option>
+                    <span class="town-selector-label">
+                        Enter Town
+                    </span>
 
-<option value="kasane">
-    Kasane
-</option>
+                    <select
+                        id="townSelector"
+                        class="town-selector"
+                    >
 
-<option value="ghanzi">
-    Ghanzi
-</option>
+                        <option value="jwaneng">
+                            Jwaneng — Pilot Town
+                        </option>
 
-<option value="serowe">
-    Serowe
-</option>
+                        <option value="gaborone">
+                            Gaborone
+                        </option>
 
-<option value="orapa">
-    Orapa
-</option>
+                        <option value="francistown">
+                            Francistown
+                        </option>
 
-</select>
+                        <option value="maun">
+                            Maun
+                        </option>
 
-<div class="select-arrow">
-    ▼
-</div>
+                        <option value="palapye">
+                            Palapye
+                        </option>
 
-</div>
+                        <option value="kasane">
+                            Kasane
+                        </option>
 
-</div>
+                        <option value="ghanzi">
+                            Ghanzi
+                        </option>
 
+                        <option value="serowe">
+                            Serowe
+                        </option>
 
-<!-- BUTTONS -->
+                        <option value="orapa">
+                            Orapa
+                        </option>
 
-<div class="hero-buttons">
+                    </select>
 
-<button
-    class="btn btn-primary"
-    id="exploreTown">
+                </div>
 
-Explore Jwaneng
+            </div>
 
-<span>→</span>
 
-</button>
+            <!-- HERO VISUAL -->
 
+            <div class="hero-visual">
 
-<button
-    id="installBtn"
-    class="btn install-btn">
+                <div class="town-orbit">
 
-📲 Install MyTown360
 
-</button>
+                    <div class="orbit-center">
 
+                        <div>
 
-<button
-    class="btn btn-secondary"
-    onclick="scrollToSection('updates')">
+                            <strong>
+                                MyTown360
+                            </strong>
 
-Latest Updates
+                            <span>
+                                One Connected Town
+                            </span>
 
-<span>↗</span>
+                        </div>
 
-</button>
+                    </div>
 
-</div>
 
+                    <div class="town-node node-jwaneng">
 
-<!-- SERVICES -->
+                        <div class="town-node-dot"></div>
 
-<div class="hero-services">
+                        <span>
+                            Jwaneng
+                        </span>
 
-<div class="service-pill">
-    <span>●</span> News
-</div>
+                    </div>
 
-<div class="service-pill">
-    <span>●</span> Jobs
-</div>
 
-<div class="service-pill">
-    <span>●</span> Businesses
-</div>
+                    <div class="town-node node-gaborone">
 
-<div class="service-pill">
-    <span>●</span> Events
-</div>
+                        <div class="town-node-dot"></div>
 
-<div class="service-pill">
-    <span>●</span> Tourism
-</div>
+                        <span>
+                            Gaborone
+                        </span>
 
-<div class="service-pill">
-    <span>●</span> Community
-</div>
+                    </div>
 
-</div>
 
-</div>
-</div>
+                    <div class="town-node node-francistown">
+
+                        <div class="town-node-dot"></div>
+
+                        <span>
+                            Francistown
+                        </span>
+
+                    </div>
+
+
+                    <div class="town-node node-maun">
+
+                        <div class="town-node-dot"></div>
+
+                        <span>
+                            Maun
+                        </span>
+
+                    </div>
+
+
+                    <div class="town-node node-palapye">
+
+                        <div class="town-node-dot"></div>
+
+                        <span>
+                            Palapye
+                        </span>
+
+                    </div>
+
+
+                    <div class="town-node node-kasane">
+
+                        <div class="town-node-dot"></div>
+
+                        <span>
+                            Kasane
+                        </span>
+
+                    </div>
+
+
+                    <div class="town-node node-ghanzi">
+
+                        <div class="town-node-dot"></div>
+
+                        <span>
+                            Ghanzi
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="pilot-card">
+
+                    <small>
+                        Platform Pilot
+                    </small>
+
+                    <strong>
+                        Jwaneng, Botswana
+                    </strong>
+
+                    <p>
+                        The first community experience
+                        validating the MyTown360 vision.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- ======================================================
+<!-- =============================================================
      STATS
-====================================================== -->
+============================================================= -->
 
-<section class="stats-section">
+<section class="stats">
 
-<div class="container">
+    <div class="container">
 
-<div class="stats-grid">
+        <div class="stats-grid">
 
-<div class="stat-card">
+            <div class="stat">
 
-<h3>15K+</h3>
+                <span class="stat-number">
+                    15K+
+                </span>
 
-<p>
-Citizens Connected
-</p>
+                <span class="stat-label">
+                    Citizens Connected
+                </span>
 
-</div>
+            </div>
 
-<div class="stat-card">
 
-<h3>500+</h3>
+            <div class="stat">
 
-<p>
-Businesses
-</p>
+                <span class="stat-number">
+                    500+
+                </span>
 
-</div>
+                <span class="stat-label">
+                    Local Businesses
+                </span>
 
-<div class="stat-card">
+            </div>
 
-<h3>250+</h3>
 
-<p>
-Opportunities
-</p>
+            <div class="stat">
 
-</div>
+                <span class="stat-number">
+                    250+
+                </span>
 
-<div class="stat-card">
+                <span class="stat-label">
+                    Opportunities
+                </span>
 
-<h3>100+</h3>
+            </div>
 
-<p>
-Community Events
-</p>
 
-</div>
+            <div class="stat">
 
-</div>
+                <span class="stat-number">
+                    100+
+                </span>
 
-</div>
+                <span class="stat-label">
+                    Community Events
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- ======================================================
+<!-- =============================================================
      SERVICES
-====================================================== -->
+============================================================= -->
 
 <section
-class="section"
-id="services">
+    class="section"
+    id="services"
+>
 
-<div class="container">
+    <div class="container">
 
-<div class="section-heading">
+        <div class="section-heading">
 
-<div class="eyebrow">
-    One Connected Ecosystem
-</div>
+            <div class="eyebrow">
 
-<h2>
-Everything Your Town Needs
-</h2>
+                <span class="eyebrow-dot"></span>
 
-<p>
-One digital platform bringing together
-the information, services and opportunities
-that matter to local communities.
-</p>
+                One Platform
 
-</div>
+            </div>
 
 
-<div class="services-grid">
+            <h2 class="section-title">
+
+                Everything your town
+                <span>needs.</span>
+
+            </h2>
 
 
-<div class="service-card">
+            <p class="section-description">
 
-<div class="service-icon">
-    📰
-</div>
+                MyTown360 brings the everyday digital needs
+                of a community together in one simple,
+                accessible ecosystem.
 
-<h3>
-Town News
-</h3>
+            </p>
 
-<p>
-Stay informed about what is happening
-in your community.
-</p>
-
-</div>
+        </div>
 
 
-<div class="service-card">
-
-<div class="service-icon">
-    💼
-</div>
-
-<h3>
-Jobs & Opportunities
-</h3>
-
-<p>
-Discover local employment, tenders,
-training and business opportunities.
-</p>
-
-</div>
+        <div class="services-grid">
 
 
-<div class="service-card">
+            <article class="service-card">
 
-<div class="service-icon">
-    🏪
-</div>
+                <span class="service-number">
+                    01
+                </span>
 
-<h3>
-Local Businesses
-</h3>
+                <div class="service-icon">
+                    📰
+                </div>
 
-<p>
-Find trusted businesses, services,
-shops and local providers.
-</p>
+                <h3>
+                    Town News
+                </h3>
 
-</div>
+                <p>
+                    Discover what is happening in your town,
+                    from local announcements to important
+                    community stories and updates.
+                </p>
 
-
-<div class="service-card">
-
-<div class="service-icon">
-    📅
-</div>
-
-<h3>
-Events
-</h3>
-
-<p>
-Discover community, sporting,
-business and cultural events.
-</p>
-
-</div>
+            </article>
 
 
-<div class="service-card">
+            <article class="service-card">
 
-<div class="service-icon">
-    🚨
-</div>
+                <span class="service-number">
+                    02
+                </span>
 
-<h3>
-Safety & Alerts
-</h3>
+                <div class="service-icon">
+                    💼
+                </div>
 
-<p>
-Access important community notices
-and emergency information.
-</p>
+                <h3>
+                    Jobs & Opportunities
+                </h3>
 
-</div>
+                <p>
+                    Find local jobs, tenders, training,
+                    internships, business opportunities
+                    and community programmes.
+                </p>
 
-
-<div class="service-card">
-
-<div class="service-icon">
-    🏛
-</div>
-
-<h3>
-Leadership Connect
-</h3>
-
-<p>
-Create stronger communication between
-communities and local leadership.
-</p>
-
-</div>
+            </article>
 
 
-<div class="service-card">
+            <article class="service-card">
 
-<div class="service-icon">
-    🗺
-</div>
+                <span class="service-number">
+                    03
+                </span>
 
-<h3>
-Tourism
-</h3>
+                <div class="service-icon">
+                    🏪
+                </div>
 
-<p>
-Explore attractions, destinations,
-activities and experiences.
-</p>
+                <h3>
+                    Local Businesses
+                </h3>
 
-</div>
+                <p>
+                    Find businesses, services, professionals
+                    and everyday providers operating within
+                    your community.
+                </p>
 
-
-<div class="service-card">
-
-<div class="service-icon">
-    🛍
-</div>
-
-<h3>
-Marketplace
-</h3>
-
-<p>
-Buy, sell and discover products
-within your local community.
-</p>
-
-</div>
+            </article>
 
 
-</div>
-</div>
+            <article class="service-card">
+
+                <span class="service-number">
+                    04
+                </span>
+
+                <div class="service-icon">
+                    📅
+                </div>
+
+                <h3>
+                    Events
+                </h3>
+
+                <p>
+                    Discover community events, sports,
+                    entertainment, meetings, markets
+                    and activities happening nearby.
+                </p>
+
+            </article>
+
+
+            <article class="service-card">
+
+                <span class="service-number">
+                    05
+                </span>
+
+                <div class="service-icon">
+                    🚨
+                </div>
+
+                <h3>
+                    Safety & Alerts
+                </h3>
+
+                <p>
+                    Receive important community alerts,
+                    emergency information and safety
+                    notices when they matter most.
+                </p>
+
+            </article>
+
+
+            <article class="service-card">
+
+                <span class="service-number">
+                    06
+                </span>
+
+                <div class="service-icon">
+                    🏛
+                </div>
+
+                <h3>
+                    Leadership Connect
+                </h3>
+
+                <p>
+                    Create a direct digital bridge between
+                    communities, local leadership and
+                    public institutions.
+                </p>
+
+            </article>
+
+
+            <article class="service-card">
+
+                <span class="service-number">
+                    07
+                </span>
+
+                <div class="service-icon">
+                    🗺
+                </div>
+
+                <h3>
+                    Tourism
+                </h3>
+
+                <p>
+                    Discover attractions, destinations,
+                    experiences, accommodation and the
+                    unique identity of each town.
+                </p>
+
+            </article>
+
+
+            <article class="service-card">
+
+                <span class="service-number">
+                    08
+                </span>
+
+                <div class="service-icon">
+                    🛍
+                </div>
+
+                <h3>
+                    Marketplace
+                </h3>
+
+                <p>
+                    Buy, sell and discover products and
+                    services from people and businesses
+                    within your local community.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- ======================================================
+<!-- =============================================================
      TOWNS
-====================================================== -->
+============================================================= -->
 
 <section
-class="section towns-section"
-id="towns">
+    class="section towns-section"
+    id="towns"
+>
 
-<div class="container">
+    <div class="container">
 
-<div class="section-heading">
+        <div class="section-heading">
 
-<div class="eyebrow">
-    Growing Network
-</div>
+            <div class="eyebrow">
 
-<h2>
-One Platform. Many Towns.
-</h2>
+                <span class="eyebrow-dot"></span>
 
-<p>
-Every town can have its own identity,
-content and digital community while
-remaining part of the wider MyTown360
-network.
-</p>
+                Connected Botswana
 
-</div>
+            </div>
 
 
-<div class="towns-grid">
+            <h2 class="section-title">
 
+                Every town can have
+                <span>a digital front door.</span>
 
-<!-- JWANENG -->
+            </h2>
 
-<div
-class="town-card"
-style="--town-color:#00c2ff"
-onclick="selectTown('jwaneng')">
 
-<div class="town-badge">
-    PILOT
-</div>
+            <p class="section-description">
 
-<div class="town-color"></div>
+                MyTown360 is designed as an expandable
+                national platform. Each town gets its own
+                digital identity while remaining connected
+                to the wider ecosystem.
 
-<h3>
-Jwaneng
-</h3>
+            </p>
 
-<p>
-My Jwaneng is the pilot community platform
-</p>
+        </div>
 
-</div>
 
+        <div class="towns-grid">
 
-<!-- GABORONE -->
 
-<div
-class="town-card"
-style="--town-color:#2563eb"
-onclick="selectTown('gaborone')">
+            <article
+                class="town-card"
+                style="
+                    --town-color:#F4B942;
+                    --town-rgb:244,185,66;
+                "
+                onclick="selectTown('jwaneng')"
+            >
 
-<div class="town-color"></div>
+                <div class="town-badge">
+                    Pilot
+                </div>
 
-<h3>
-Gaborone
-</h3>
+                <div class="town-monogram">
+                    J
+                </div>
 
-<p>
-Digital platform coming soon
-</p>
+                <h3>
+                    Jwaneng
+                </h3>
 
-</div>
+                <p>
+                    The pilot community for the
+                    MyTown360 platform.
+                </p>
 
+                <div class="town-arrow">
+                    →
+                </div>
 
-<!-- FRANCISTOWN -->
+            </article>
 
-<div
-class="town-card"
-style="--town-color:#f59e0b"
-onclick="selectTown('francistown')">
 
-<div class="town-color"></div>
+            <article
+                class="town-card"
+                style="
+                    --town-color:#D9A441;
+                    --town-rgb:217,164,65;
+                "
+                onclick="selectTown('gaborone')"
+            >
 
-<h3>
-Francistown
-</h3>
+                <div class="town-monogram">
+                    G
+                </div>
 
-<p>
-Digital platform coming soon
-</p>
+                <h3>
+                    Gaborone
+                </h3>
 
-</div>
+                <p>
+                    Botswana's capital and
+                    future digital town.
+                </p>
 
+                <div class="town-arrow">
+                    →
+                </div>
 
-<!-- MAUN -->
+            </article>
 
-<div
-class="town-card"
-style="--town-color:#00d084"
-onclick="selectTown('maun')">
 
-<div class="town-color"></div>
+            <article
+                class="town-card"
+                style="
+                    --town-color:#E76F51;
+                    --town-rgb:231,111,81;
+                "
+                onclick="selectTown('francistown')"
+            >
+
+                <div class="town-monogram">
+                    F
+                </div>
+
+                <h3>
+                    Francistown
+                </h3>
 
-<h3>
-Maun
-</h3>
+                <p>
+                    A future connected community
+                    experience.
+                </p>
+
+                <div class="town-arrow">
+                    →
+                </div>
+
+            </article>
+
+
+            <article
+                class="town-card"
+                style="
+                    --town-color:#2FBF71;
+                    --town-rgb:47,191,113;
+                "
+                onclick="selectTown('maun')"
+            >
+
+                <div class="town-monogram">
+                    M
+                </div>
+
+                <h3>
+                    Maun
+                </h3>
 
-<p>
-Digital platform coming soon
-</p>
+                <p>
+                    Connecting community,
+                    tourism and opportunity.
+                </p>
+
+                <div class="town-arrow">
+                    →
+                </div>
+
+            </article>
+
+
+            <article
+                class="town-card"
+                style="
+                    --town-color:#C99120;
+                    --town-rgb:201,145,32;
+                "
+                onclick="selectTown('palapye')"
+            >
+
+                <div class="town-monogram">
+                    P
+                </div>
+
+                <h3>
+                    Palapye
+                </h3>
 
-</div>
+                <p>
+                    Building the next connected
+                    town experience.
+                </p>
+
+                <div class="town-arrow">
+                    →
+                </div>
+
+            </article>
+
+
+            <article
+                class="town-card"
+                style="
+                    --town-color:#2FBF71;
+                    --town-rgb:47,191,113;
+                "
+                onclick="selectTown('kasane')"
+            >
+
+                <div class="town-monogram">
+                    K
+                </div>
+
+                <h3>
+                    Kasane
+                </h3>
+
+                <p>
+                    Digital connection for a
+                    world-class tourism town.
+                </p>
 
+                <div class="town-arrow">
+                    →
+                </div>
 
-<!-- PALAPYE -->
+            </article>
 
-<div
-class="town-card"
-style="--town-color:#8b5cf6"
-onclick="selectTown('palapye')">
 
-<div class="town-color"></div>
+            <article
+                class="town-card"
+                style="
+                    --town-color:#E76F51;
+                    --town-rgb:231,111,81;
+                "
+                onclick="selectTown('ghanzi')"
+            >
 
-<h3>
-Palapye
-</h3>
+                <div class="town-monogram">
+                    G
+                </div>
 
-<p>
-Digital platform coming soon
-</p>
+                <h3>
+                    Ghanzi
+                </h3>
 
-</div>
+                <p>
+                    Connecting people, businesses
+                    and local opportunities.
+                </p>
 
+                <div class="town-arrow">
+                    →
+                </div>
 
-<!-- KASANE -->
+            </article>
 
-<div
-class="town-card"
-style="--town-color:#14b8a6"
-onclick="selectTown('kasane')">
 
-<div class="town-color"></div>
+            <article
+                class="town-card"
+                style="
+                    --town-color:#F4B942;
+                    --town-rgb:244,185,66;
+                "
+                onclick="selectTown('serowe')"
+            >
 
-<h3>
-Kasane
-</h3>
+                <div class="town-monogram">
+                    S
+                </div>
 
-<p>
-Digital platform coming soon
-</p>
+                <h3>
+                    Serowe
+                </h3>
 
-</div>
+                <p>
+                    A digital community experience
+                    for the future.
+                </p>
 
+                <div class="town-arrow">
+                    →
+                </div>
 
-<!-- GHANZI -->
+            </article>
 
-<div
-class="town-card"
-style="--town-color:#ef4444"
-onclick="selectTown('ghanzi')">
 
-<div class="town-color"></div>
+            <article
+                class="town-card"
+                style="
+                    --town-color:#E76F51;
+                    --town-rgb:231,111,81;
+                "
+                onclick="selectTown('orapa')"
+            >
 
-<h3>
-Ghanzi
-</h3>
+                <div class="town-monogram">
+                    O
+                </div>
 
-<p>
-Digital platform coming soon
-</p>
+                <h3>
+                    Orapa
+                </h3>
 
-</div>
+                <p>
+                    Connecting a unique mining
+                    community digitally.
+                </p>
 
+                <div class="town-arrow">
+                    →
+                </div>
 
-<!-- SEROWE -->
+            </article>
 
-<div
-class="town-card"
-style="--town-color:#ec4899"
-onclick="selectTown('serowe')">
 
-<div class="town-color"></div>
+        </div>
 
-<h3>
-Serowe
-</h3>
 
-<p>
-Digital platform coming soon
-</p>
+        <!-- JWANENG PILOT -->
 
-</div>
+        <div class="pilot-feature">
 
+            <div>
 
-<!-- ORAPA -->
+                <div class="pilot-feature-label">
+                    The Pilot
+                </div>
 
-<div
-class="town-card"
-style="--town-color:#f97316"
-onclick="selectTown('orapa')">
+                <h3>
+                    Jwaneng is where the
+                    MyTown360 journey begins.
+                </h3>
 
-<div class="town-color"></div>
+                <p>
+                    The Jwaneng pilot is designed to prove
+                    the model in a real community before
+                    expanding the platform to additional
+                    towns across Botswana.
+                </p>
 
-<h3>
-Orapa
-</h3>
 
-<p>
-Digital platform coming soon
-</p>
+                <div class="pilot-communities">
 
-</div>
+                    <span class="pilot-community">
+                        Jwaneng
+                    </span>
 
+                    <span class="pilot-community">
+                        Sese
+                    </span>
 
-</div>
+                    <span class="pilot-community">
+                        Mokhomma
+                    </span>
 
+                    <span class="pilot-community">
+                        Lefoko
+                    </span>
 
-<!-- JWANENG AREA -->
+                    <span class="pilot-community">
+                        Betesankwe
+                    </span>
 
-<div class="area-note">
+                    <span class="pilot-community">
+                        Sekoma
+                    </span>
 
-<strong>
-Jwaneng Area Community Network
-</strong>
+                    <span class="pilot-community">
+                        Maokane
+                    </span>
 
-<p>
-The MyTown360 Jwaneng pilot serves Jwaneng
-and its surrounding communities, including
-Sese, Mokhomma, Lefoko, Betesankwe, Sekoma,
-Maokane and Machana. These communities remain
-part of the wider Jwaneng area rather than being
-listed as separate national towns.
-</p>
+                    <span class="pilot-community">
+                        Machana
+                    </span>
 
-</div>
+                </div>
 
-</div>
+            </div>
+
+
+            <button
+                class="btn btn-primary"
+                onclick="openTown('jwaneng')"
+            >
+                Enter Jwaneng
+                <span>→</span>
+            </button>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- ======================================================
-     UPDATES
-====================================================== -->
+<!-- =============================================================
+     COMMUNITY PULSE
+============================================================= -->
 
 <section
-class="section"
-id="updates">
+    class="section"
+    id="updates"
+>
 
-<div class="container">
+    <div class="container">
 
-<div class="section-heading">
+        <div class="section-heading">
 
-<div class="eyebrow">
-    Community Pulse
-</div>
+            <div class="eyebrow">
 
-<h2>
-What's Happening?
-</h2>
+                <span class="eyebrow-dot"></span>
 
-<p>
-A glimpse into the information that can
-flow through the MyTown360 ecosystem.
-</p>
+                Community Pulse
 
-</div>
+            </div>
 
 
-<div class="feed-grid">
+            <h2 class="section-title">
+
+                What's happening
+                <span>around town?</span>
+
+            </h2>
 
 
-<div class="feed-card">
+            <p class="section-description">
 
-<div class="feed-tag">
-    Town News
-</div>
+                A connected town should make it easier
+                for people to know what is happening,
+                discover opportunities and participate.
 
-<h3>
-Community news and announcements
-from your local area.
-</h3>
+            </p>
 
-<p>
-Access verified local stories,
-announcements and important notices.
-</p>
-
-<span class="feed-date">
-    LIVE COMMUNITY FEED
-</span>
-
-</div>
+        </div>
 
 
-<div class="feed-card">
-
-<div class="feed-tag">
-    Opportunities
-</div>
-
-<h3>
-Discover jobs and opportunities
-around your town.
-</h3>
-
-<p>
-Connect residents with employment,
-business and development opportunities.
-</p>
-
-<span class="feed-date">
-    OPPORTUNITY NETWORK
-</span>
-
-</div>
+        <div class="pulse-grid">
 
 
-<div class="feed-card">
+            <article class="pulse-card featured">
 
-<div class="feed-tag">
-    Events
-</div>
+                <div class="pulse-top">
 
-<h3>
-Never miss what's happening
-in your community.
-</h3>
+                    <span class="pulse-type">
+                        Town News
+                    </span>
 
-<p>
-Find sporting events, cultural events,
-meetings, markets and more.
-</p>
+                    <span class="pulse-date">
+                        Community
+                    </span>
 
-<span class="feed-date">
-    COMMUNITY CALENDAR
-</span>
-
-</div>
+                </div>
 
 
-</div>
-</div>
+                <h3>
+                    One place for the stories
+                    that matter to your community.
+                </h3>
+
+
+                <p>
+                    MyTown360 creates a dedicated digital
+                    space for important local announcements,
+                    community stories and town information.
+                </p>
+
+
+                <span class="pulse-link">
+                    Explore Town News →
+                </span>
+
+            </article>
+
+
+            <article class="pulse-card">
+
+                <div class="pulse-top">
+
+                    <span class="pulse-type">
+                        Opportunities
+                    </span>
+
+                    <span class="pulse-date">
+                        Jobs
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Find opportunities
+                    closer to home.
+                </h3>
+
+
+                <p>
+                    Jobs, tenders, training, internships
+                    and other opportunities can be brought
+                    together for local communities.
+                </p>
+
+
+                <span class="pulse-link">
+                    Explore Jobs →
+                </span>
+
+            </article>
+
+
+            <article class="pulse-card">
+
+                <div class="pulse-top">
+
+                    <span class="pulse-type">
+                        Events
+                    </span>
+
+                    <span class="pulse-date">
+                        Community
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Never miss what
+                    is happening.
+                </h3>
+
+
+                <p>
+                    Discover sports, entertainment,
+                    meetings, markets and community
+                    activities happening around town.
+                </p>
+
+
+                <span class="pulse-link">
+                    Explore Events →
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- ======================================================
-     CTA
-====================================================== -->
+<!-- =============================================================
+     ABOUT / CTA
+============================================================= -->
 
 <section
-class="cta-section"
-id="about">
+    class="cta-section"
+    id="about"
+>
 
-<div class="container">
+    <div class="container">
 
-<div class="cta-box">
+        <div class="cta">
 
-<h2>
+            <h2>
 
-The Digital Front Door
+                The digital front door
+                <br>
 
-<br>
+                to your <span>town.</span>
 
-to Your Town.
+            </h2>
 
-</h2>
 
-<p>
+            <p>
 
-MyTown360 is designed to make local
-information easier to discover, communities
-easier to connect and towns easier to experience.
+                MyTown360 is more than an app.
+                It is a digital infrastructure concept
+                designed to make communities more connected,
+                informed, visible and accessible.
 
-</p>
+            </p>
 
-<button
-class="btn btn-primary"
-onclick="scrollToSection('towns')">
 
-Explore the Town Network
+            <div class="cta-actions">
 
-→
+                <button
+                    class="btn btn-primary"
+                    onclick="scrollToSection('towns')"
+                >
+                    Explore Towns
+                    <span>→</span>
+                </button>
 
-</button>
 
-</div>
+                <button
+                    class="btn btn-secondary"
+                    onclick="installMyTown360()"
+                >
+                    Install MyTown360
+                </button>
 
-</div>
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
+</main>
 
-<!-- ======================================================
+
+<!-- =============================================================
      FOOTER
-====================================================== -->
+============================================================= -->
 
 <footer>
 
-<div class="container">
-
-<div class="footer-grid">
+    <div class="container">
 
 
-<div class="footer-brand">
-
-<a href="#" class="logo">
-
-<div class="logo-mark">
-    360
-</div>
-
-<div>
-    MyTown<span>360</span>
-</div>
-
-</a>
-
-<p>
-Connecting communities and empowering
-towns through one digital ecosystem.
-</p>
-
-</div>
+        <div class="footer-grid">
 
 
-<div class="footer-column">
+            <div class="footer-brand">
 
-<h4>
-Platform
-</h4>
+                <a href="#home" class="logo">
 
-<a href="#services">
-Services
-</a>
+                    <div class="logo-mark">
+                        360
+                    </div>
 
-<a href="#towns">
-Towns
-</a>
+                    <div class="logo-text">
+                        MyTown<span>360</span>
+                    </div>
 
-<a href="#updates">
-Updates
-</a>
-
-</div>
+                </a>
 
 
-<div class="footer-column">
+                <p>
+                    A connected digital ecosystem for
+                    towns, communities, businesses,
+                    opportunities and local life.
+                </p>
 
-<h4>
-Community
-</h4>
-
-<a href="#">
-News
-</a>
-
-<a href="#">
-Jobs
-</a>
-
-<a href="#">
-Businesses
-</a>
-
-<a href="#">
-Events
-</a>
-
-</div>
+            </div>
 
 
-<div class="footer-column">
+            <div class="footer-column">
 
-<h4>
-Discover
-</h4>
+                <h4>
+                    Platform
+                </h4>
 
-<a href="#">
-Tourism
-</a>
+                <a href="#services">
+                    Services
+                </a>
 
-<a href="#">
-Marketplace
-</a>
+                <a href="#towns">
+                    Towns
+                </a>
 
-<a href="#">
-Leadership
-</a>
+                <a href="#updates">
+                    Updates
+                </a>
 
-</div>
+                <a href="#about">
+                    About
+                </a>
+
+            </div>
 
 
-</div>
+            <div class="footer-column">
+
+                <h4>
+                    Community
+                </h4>
+
+                <a href="#towns">
+                    Jwaneng
+                </a>
+
+                <a href="#towns">
+                    Gaborone
+                </a>
+
+                <a href="#towns">
+                    Francistown
+                </a>
+
+                <a href="#towns">
+                    Maun
+                </a>
+
+            </div>
 
 
-<div class="footer-bottom">
+            <div class="footer-column">
 
-<div>
-© 2026 MyTown360. All rights reserved.
-</div>
+                <h4>
+                    Discover
+                </h4>
 
-<div>
-A connected community platform for Botswana.
-</div>
+                <a href="#services">
+                    Jobs
+                </a>
 
-</div>
+                <a href="#services">
+                    Businesses
+                </a>
 
-</div>
+                <a href="#services">
+                    Tourism
+                </a>
+
+                <a href="#services">
+                    Marketplace
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 MyTown360. All rights reserved.
+            </span>
+
+            <span>
+                A digital town ecosystem by A-eye Group.
+            </span>
+
+        </div>
+
+    </div>
 
 </footer>
 
 
-<!-- ======================================================
-     MOBILE NAVIGATION
-====================================================== -->
+<!-- =============================================================
+     MOBILE BOTTOM NAV
+============================================================= -->
 
-<div class="mobile-nav">
+<nav class="mobile-bottom-nav">
 
-<a
-href="#"
-class="active">
+    <div class="mobile-bottom-nav-inner">
 
-<span>⌂</span>
-
-Home
-
-</a>
-
-<a href="#services">
-
-<span>▦</span>
-
-Services
-
-</a>
-
-<a href="#towns">
-
-<span>◎</span>
-
-Towns
-
-</a>
-
-<a href="#updates">
-
-<span>◉</span>
-
-Updates
-
-</a>
-
-<a href="#about">
-
-<span>☰</span>
-
-More
-
-</a>
-
-</div>
+        <a
+            href="#home"
+            class="bottom-nav-item active"
+        >
+            <span>⌂</span>
+            <span>Home</span>
+        </a>
 
 
-<!-- ======================================================
+        <a
+            href="#services"
+            class="bottom-nav-item"
+        >
+            <span>◈</span>
+            <span>Services</span>
+        </a>
+
+
+        <a
+            href="#towns"
+            class="bottom-nav-item"
+        >
+            <span>◎</span>
+            <span>Towns</span>
+        </a>
+
+
+        <a
+            href="#updates"
+            class="bottom-nav-item"
+        >
+            <span>◌</span>
+            <span>Updates</span>
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =============================================================
      INSTALL BANNER
-====================================================== -->
+============================================================= -->
 
 <div
-id="installBanner"
-class="install-banner">
+    class="install-banner"
+    id="installBanner"
+>
 
-<div>
+    <div class="install-text">
 
-<strong>
-Install MyTown360
-</strong>
+        <strong>
+            Install MyTown360
+        </strong>
 
-<p>
-Get faster access to your town and community updates.
-</p>
+        <span>
+            Add MyTown360 to your device for quick access.
+        </span>
+
+    </div>
+
+
+    <div class="install-actions">
+
+        <button
+            class="install-button"
+            onclick="installMyTown360()"
+        >
+            Install
+        </button>
+
+        <button
+            class="install-close"
+            onclick="closeInstallBanner()"
+        >
+            Later
+        </button>
+
+    </div>
 
 </div>
 
-<button id="installNow">
-Install
-</button>
-
-</div>
-
-
-<div
-id="installStatus"
-class="install-status">
-
-✓ MyTown360 installed
-
-</div>
-
-
-<!-- ======================================================
-     JAVASCRIPT
-====================================================== -->
 
 <script>
 
@@ -2742,64 +4153,64 @@ const towns = {
 
     jwaneng: {
         name: "Jwaneng",
-        color: "#00c2ff",
-        rgb: "0,194,255",
+        color: "#F4B942",
+        rgb: "244,185,66",
         url: "https://myjwaneng.co.bw"
     },
 
     gaborone: {
         name: "Gaborone",
-        color: "#2563eb",
-        rgb: "37,99,235",
+        color: "#D9A441",
+        rgb: "217,164,65",
         url: null
     },
 
     francistown: {
         name: "Francistown",
-        color: "#f59e0b",
-        rgb: "245,158,11",
+        color: "#E76F51",
+        rgb: "231,111,81",
         url: null
     },
 
     maun: {
         name: "Maun",
-        color: "#00d084",
-        rgb: "0,208,132",
+        color: "#2FBF71",
+        rgb: "47,191,113",
         url: null
     },
 
     palapye: {
         name: "Palapye",
-        color: "#8b5cf6",
-        rgb: "139,92,246",
+        color: "#C99120",
+        rgb: "201,145,32",
         url: null
     },
 
     kasane: {
         name: "Kasane",
-        color: "#14b8a6",
-        rgb: "20,184,166",
+        color: "#2FBF71",
+        rgb: "47,191,113",
         url: null
     },
 
     ghanzi: {
         name: "Ghanzi",
-        color: "#ef4444",
-        rgb: "239,68,68",
+        color: "#E76F51",
+        rgb: "231,111,81",
         url: null
     },
 
     serowe: {
         name: "Serowe",
-        color: "#ec4899",
-        rgb: "236,72,153",
+        color: "#F4B942",
+        rgb: "244,185,66",
         url: null
     },
 
     orapa: {
         name: "Orapa",
-        color: "#f97316",
-        rgb: "249,115,22",
+        color: "#E76F51",
+        rgb: "231,111,81",
         url: null
     }
 
@@ -2810,49 +4221,63 @@ const towns = {
    ELEMENTS
 ========================================================= */
 
+const root =
+    document.documentElement;
+
 const townSelector =
     document.getElementById("townSelector");
 
-const exploreButton =
-    document.getElementById("exploreTown");
+const navbar =
+    document.getElementById("navbar");
+
+const mobileToggle =
+    document.getElementById("mobileToggle");
+
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
+const installBanner =
+    document.getElementById("installBanner");
+
+const heroInstallButton =
+    document.getElementById("heroInstallButton");
 
 
 /* =========================================================
-   APPLY TOWN THEME
+   TOWN THEME
 ========================================================= */
 
 function applyTownTheme(townKey) {
 
-    const town = towns[townKey];
+    const town =
+        towns[townKey];
 
-    if (!town) return;
+    if (!town) {
+        return;
+    }
 
-    document.documentElement.style.setProperty(
-        "--accent",
+    /*
+       Keep the main MyTown360 brand GOLD.
+       The selected town accent is used only
+       where appropriate.
+    */
+
+    root.style.setProperty(
+        "--town-accent",
         town.color
     );
 
-    document.documentElement.style.setProperty(
-        "--accent-rgb",
+    root.style.setProperty(
+        "--town-rgb",
         town.rgb
     );
 
-    const themeMeta =
-        document.querySelector(
-            'meta[name="theme-color"]'
-        );
-
-    if (themeMeta) {
-
-        themeMeta.setAttribute(
+    document
+        .querySelector('meta[name="theme-color"]')
+        ?.setAttribute(
             "content",
-            town.color
+            "#11100E"
         );
-
-    }
-
-    exploreButton.innerHTML =
-        `Explore ${town.name} <span>→</span>`;
 
 }
 
@@ -2863,30 +4288,64 @@ function applyTownTheme(townKey) {
 
 function selectTown(townKey) {
 
-    if (!towns[townKey]) return;
+    if (!towns[townKey]) {
+        return;
+    }
 
-    townSelector.value = townKey;
+    townSelector.value =
+        townKey;
 
-    applyTownTheme(townKey);
+    applyTownTheme(
+        townKey
+    );
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    openTown(townKey);
+}
+
+
+/* =========================================================
+   OPEN TOWN
+========================================================= */
+
+function openTown(townKey) {
+
+    const town =
+        towns[townKey];
+
+    if (!town) {
+        return;
+    }
+
+
+    if (town.url) {
+
+        window.location.href =
+            town.url;
+
+        return;
+    }
+
+
+    alert(
+        `${town.name} is part of the MyTown360 expansion network and its digital town platform is coming soon.`
+    );
 
 }
 
 
 /* =========================================================
-   TOWN SELECTOR
+   SELECTOR CHANGE
 ========================================================= */
 
 townSelector.addEventListener(
     "change",
     function () {
 
+        const townKey =
+            this.value;
+
         applyTownTheme(
-            this.value
+            townKey
         );
 
     }
@@ -2894,389 +4353,118 @@ townSelector.addEventListener(
 
 
 /* =========================================================
-   EXPLORE TOWN
+   SCROLL TO SECTION
 ========================================================= */
 
-exploreButton.addEventListener(
-    "click",
-    function () {
+function scrollToSection(id) {
 
-        const selectedTown =
-            townSelector.value;
+    const element =
+        document.getElementById(id);
 
-        const town =
-            towns[selectedTown];
-
-        if (!town) return;
-
-        if (town.url) {
-
-            window.location.href =
-                town.url;
-
-            return;
-
-        }
-
-        alert(
-            `${town.name}'s digital platform is coming soon.`
-        );
-
+    if (!element) {
+        return;
     }
-);
 
-
-/* =========================================================
-   INITIALISE JWANENG
-========================================================= */
-
-applyTownTheme("jwaneng");
-
-
-/* =========================================================
-   SCROLL FUNCTION
-========================================================= */
-
-function scrollToSection(sectionId) {
-
-    const section =
-        document.getElementById(sectionId);
-
-    if (!section) return;
-
-    section.scrollIntoView({
-        behavior: "smooth"
+    element.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
     });
 
-}
 
-
-/* =========================================================
-   DIGITAL NETWORK
-========================================================= */
-
-const network =
-    document.getElementById("network");
-
-const nodePositions = [
-
-    [15,25],
-    [27,44],
-    [42,19],
-    [55,36],
-    [72,22],
-    [86,39],
-    [35,69],
-    [55,72],
-    [73,65],
-    [91,70],
-    [12,66]
-
-];
-
-const networkNodes = [];
-
-
-/* =========================================================
-   CREATE NETWORK NODES
-========================================================= */
-
-nodePositions.forEach(
-    (position,index) => {
-
-        const node =
-            document.createElement("div");
-
-        node.className =
-            "network-node";
-
-        node.style.left =
-            position[0] + "%";
-
-        node.style.top =
-            position[1] + "%";
-
-        node.style.animationDelay =
-            (index * .22) + "s";
-
-        network.appendChild(node);
-
-        networkNodes.push({
-            element: node,
-            x: position[0],
-            y: position[1]
-        });
-
-    }
-);
-
-
-/* =========================================================
-   NETWORK CONNECTIONS
-========================================================= */
-
-const connections = [
-
-    [0,1],
-    [0,2],
-    [1,2],
-    [1,6],
-    [2,3],
-    [2,4],
-    [3,5],
-    [3,7],
-    [4,5],
-    [4,8],
-    [5,9],
-    [6,7],
-    [6,10],
-    [7,8],
-    [8,9]
-
-];
-
-
-function createConnection(first,second) {
-
-    const width =
-        window.innerWidth;
-
-    const height =
-        window.innerHeight;
-
-    const px1 =
-        (first.x / 100) * width;
-
-    const py1 =
-        (first.y / 100) * height;
-
-    const px2 =
-        (second.x / 100) * width;
-
-    const py2 =
-        (second.y / 100) * height;
-
-    const dx =
-        px2 - px1;
-
-    const dy =
-        py2 - py1;
-
-    const distance =
-        Math.sqrt(
-            dx * dx +
-            dy * dy
-        );
-
-    const angle =
-        Math.atan2(
-            dy,
-            dx
-        ) * 180 / Math.PI;
-
-    const line =
-        document.createElement("div");
-
-    line.className =
-        "network-line";
-
-    line.style.left =
-        px1 + "px";
-
-    line.style.top =
-        py1 + "px";
-
-    line.style.width =
-        distance + "px";
-
-    line.style.transform =
-        `rotate(${angle}deg)`;
-
-    line.style.animationDelay =
-        (Math.random() * 2) + "s";
-
-    network.appendChild(line);
-
-}
-
-
-connections.forEach(connection => {
-
-    createConnection(
-        networkNodes[connection[0]],
-        networkNodes[connection[1]]
+    mobileMenu.classList.remove(
+        "active"
     );
 
-});
+}
 
 
 /* =========================================================
-   RESPONSIVE NETWORK
-========================================================= */
-
-let resizeTimer;
-
-window.addEventListener(
-    "resize",
-    function () {
-
-        clearTimeout(resizeTimer);
-
-        resizeTimer =
-            setTimeout(() => {
-
-                document
-                    .querySelectorAll(
-                        ".network-line"
-                    )
-                    .forEach(
-                        line => line.remove()
-                    );
-
-                connections.forEach(
-                    connection => {
-
-                        createConnection(
-                            networkNodes[
-                                connection[0]
-                            ],
-                            networkNodes[
-                                connection[1]
-                            ]
-                        );
-
-                    }
-                );
-
-            },200);
-
-    }
-);
-
-
-/* =========================================================
-   NAVBAR SCROLL EFFECT
+   NAVBAR SCROLL
 ========================================================= */
 
 window.addEventListener(
     "scroll",
     function () {
 
-        const navbar =
-            document.querySelector(
-                ".navbar"
+        if (window.scrollY > 30) {
+
+            navbar.classList.add(
+                "scrolled"
             );
-
-        if (window.scrollY > 40) {
-
-            navbar.style.background =
-                "rgba(5,11,20,.94)";
 
         } else {
 
-            navbar.style.background =
-                "rgba(5,11,20,.76)";
+            navbar.classList.remove(
+                "scrolled"
+            );
 
         }
 
+    },
+    {
+        passive: true
     }
 );
 
 
 /* =========================================================
-   PWA INSTALLATION
+   MOBILE MENU
+========================================================= */
+
+mobileToggle.addEventListener(
+    "click",
+    function () {
+
+        mobileMenu.classList.toggle(
+            "active"
+        );
+
+    }
+);
+
+
+/* Close mobile menu after navigation */
+
+mobileMenu
+    .querySelectorAll("a")
+    .forEach(
+        link => {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    mobileMenu.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   PWA INSTALL
 ========================================================= */
 
 let deferredPrompt = null;
 
-const installBtn =
-    document.getElementById("installBtn");
 
-const installBanner =
-    document.getElementById("installBanner");
-
-const installNow =
-    document.getElementById("installNow");
-
-const installStatus =
-    document.getElementById("installStatus");
-
-
-/* =========================================================
-   CHECK IF APP IS ALREADY INSTALLED
-========================================================= */
-
-function isAppInstalled() {
-
-    return (
-        window.matchMedia(
-            "(display-mode: standalone)"
-        ).matches
-        ||
-        window.navigator.standalone === true
-    );
-
-}
-
-
-/* =========================================================
-   SHOW INSTALL UI
-========================================================= */
-
-function showInstallUI() {
-
-    if (isAppInstalled()) {
-        return;
-    }
-
-    if (installBtn) {
-        installBtn.style.display =
-            "inline-flex";
-    }
-
-    if (installBanner) {
-        installBanner.style.display =
-            "flex";
-    }
-
-}
-
-
-/* =========================================================
-   HIDE INSTALL UI
-========================================================= */
-
-function hideInstallUI() {
-
-    if (installBtn) {
-        installBtn.style.display =
-            "none";
-    }
-
-    if (installBanner) {
-        installBanner.style.display =
-            "none";
-    }
-
-}
-
-
-/* =========================================================
-   BEFORE INSTALL PROMPT
-========================================================= */
+/* Browser detects installability */
 
 window.addEventListener(
     "beforeinstallprompt",
-    function(event) {
+    function (event) {
 
         event.preventDefault();
 
-        deferredPrompt = event;
+        deferredPrompt =
+            event;
 
-        showInstallUI();
-
-        console.log(
-            "MyTown360 installation is available."
+        installBanner.classList.add(
+            "show"
         );
 
     }
@@ -3284,61 +4472,82 @@ window.addEventListener(
 
 
 /* =========================================================
-   INSTALL FUNCTION
+   INSTALL APP
 ========================================================= */
 
 async function installMyTown360() {
 
-    if (!deferredPrompt) {
+    /*
+       Native browser install
+    */
 
-        alert(
-            "If the install option is not showing, use your browser's menu and select 'Install MyTown360' or 'Add to Home Screen'."
+    if (deferredPrompt) {
+
+        deferredPrompt.prompt();
+
+        const result =
+            await deferredPrompt.userChoice;
+
+        if (
+            result.outcome ===
+            "accepted"
+        ) {
+
+            console.log(
+                "MyTown360 installation accepted."
+            );
+
+        }
+
+        deferredPrompt = null;
+
+        installBanner.classList.remove(
+            "show"
         );
 
         return;
-
     }
 
-    deferredPrompt.prompt();
 
-    const result =
-        await deferredPrompt.userChoice;
+    /*
+       iOS / unsupported browsers
+    */
 
-    console.log(
-        "Installation result:",
-        result.outcome
-    );
-
-    deferredPrompt = null;
-
-    hideInstallUI();
-
-}
+    const isIOS =
+        /iphone|ipad|ipod/i.test(
+            navigator.userAgent
+        );
 
 
-/* =========================================================
-   INSTALL BUTTON
-========================================================= */
-
-if (installBtn) {
-
-    installBtn.addEventListener(
-        "click",
-        installMyTown360
-    );
-
-}
+    const isStandalone =
+        window.matchMedia(
+            "(display-mode: standalone)"
+        ).matches ||
+        window.navigator.standalone === true;
 
 
-/* =========================================================
-   INSTALL BANNER BUTTON
-========================================================= */
+    if (isStandalone) {
 
-if (installNow) {
+        alert(
+            "MyTown360 is already installed on this device."
+        );
 
-    installNow.addEventListener(
-        "click",
-        installMyTown360
+        return;
+    }
+
+
+    if (isIOS) {
+
+        alert(
+            "To install MyTown360 on iPhone or iPad: tap Share, then choose 'Add to Home Screen'."
+        );
+
+        return;
+    }
+
+
+    alert(
+        "If your browser supports installation, use the browser's Install App or Add to Home Screen option."
     );
 
 }
@@ -3350,46 +4559,72 @@ if (installNow) {
 
 window.addEventListener(
     "appinstalled",
-    function() {
+    function () {
 
         console.log(
             "MyTown360 has been installed."
         );
 
-        hideInstallUI();
-
-        if (installStatus) {
-
-            installStatus.style.display =
-                "block";
-
-            setTimeout(
-                () => {
-
-                    installStatus.style.display =
-                        "none";
-
-                },
-                4000
-            );
-
-        }
-
         deferredPrompt = null;
+
+        installBanner.classList.remove(
+            "show"
+        );
 
     }
 );
 
 
 /* =========================================================
-   SERVICE WORKER REGISTRATION
+   CLOSE INSTALL BANNER
 ========================================================= */
 
-if ("serviceWorker" in navigator) {
+function closeInstallBanner() {
+
+    installBanner.classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =========================================================
+   STANDALONE DETECTION
+========================================================= */
+
+function isRunningAsPWA() {
+
+    return (
+        window.matchMedia(
+            "(display-mode: standalone)"
+        ).matches ||
+        window.navigator.standalone === true
+    );
+
+}
+
+
+if (isRunningAsPWA()) {
+
+    console.log(
+        "MyTown360 is running as a PWA."
+    );
+
+}
+
+
+/* =========================================================
+   SERVICE WORKER
+========================================================= */
+
+if (
+    "serviceWorker"
+    in navigator
+) {
 
     window.addEventListener(
         "load",
-        async function() {
+        async function () {
 
             try {
 
@@ -3406,10 +4641,10 @@ if ("serviceWorker" in navigator) {
                     registration.scope
                 );
 
-            } catch(error) {
+            } catch (error) {
 
                 console.error(
-                    "MyTown360 Service Worker registration failed:",
+                    "Service Worker registration failed:",
                     error
                 );
 
@@ -3422,38 +4657,179 @@ if ("serviceWorker" in navigator) {
 
 
 /* =========================================================
-   IOS / MANUAL INSTALL SUPPORT
+   SERVICE WORKER CONTROLLER CHANGE
 ========================================================= */
 
-if (
-    isAppInstalled()
-) {
+navigator.serviceWorker?.addEventListener(
+    "controllerchange",
+    function () {
 
-    hideInstallUI();
+        console.log(
+            "MyTown360 Service Worker controller changed."
+        );
 
-}
+    }
+);
 
 
 /* =========================================================
-   SERVICE WORKER UPDATE HANDLING
+   ACTIVE MOBILE NAV
 ========================================================= */
 
-if ("serviceWorker" in navigator) {
+const bottomNavItems =
+    document.querySelectorAll(
+        ".bottom-nav-item"
+    );
 
-    navigator.serviceWorker.addEventListener(
-        "controllerchange",
-        function() {
 
-            console.log(
-                "MyTown360 Service Worker updated."
+bottomNavItems.forEach(
+    item => {
+
+        item.addEventListener(
+            "click",
+            function () {
+
+                bottomNavItems.forEach(
+                    navItem => {
+
+                        navItem.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+                this.classList.add(
+                    "active"
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   SECTION OBSERVER
+========================================================= */
+
+const sections =
+    document.querySelectorAll(
+        "main section[id]"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        const id =
+                            entry.target.id;
+
+                        bottomNavItems.forEach(
+                            item => {
+
+                                item.classList.remove(
+                                    "active"
+                                );
+
+                                if (
+                                    item.getAttribute(
+                                        "href"
+                                    ) ===
+                                    `#${id}`
+                                ) {
+
+                                    item.classList.add(
+                                        "active"
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    }
+
+                }
             );
 
+        },
+        {
+            threshold: .35
         }
     );
 
-}
+
+sections.forEach(
+    section => {
+
+        observer.observe(
+            section
+        );
+
+    }
+);
+
+
+/* =========================================================
+   INITIALISE
+========================================================= */
+
+applyTownTheme(
+    "jwaneng"
+);
+
+
+/* =========================================================
+   KEYBOARD ESCAPE
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            mobileMenu.classList.remove(
+                "active"
+            );
+
+            installBanner.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CONSOLE BRAND MESSAGE
+========================================================= */
+
+console.log(
+    "%cMyTown360",
+    "font-size:24px;font-weight:900;color:#F4B942;"
+);
+
+console.log(
+    "The Digital Front Door to Your Town."
+);
 
 </script>
+
 
 </body>
 </html>
