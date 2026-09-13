@@ -2300,6 +2300,387 @@ footer {
 
 }
 
+/* =========================================================
+   MOBILE BOTTOM NAVIGATION
+========================================================= */
+
+.mobile-bottom-bar {
+
+    display:
+        none;
+
+    position:
+        fixed;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    bottom:
+        0;
+
+    z-index:
+        1100;
+
+    height:
+        68px;
+
+    padding:
+        7px 8px
+        calc(7px + env(safe-area-inset-bottom));
+
+    background:
+        rgba(255,255,255,.97);
+
+    border-top:
+        1px solid
+        var(--border);
+
+    box-shadow:
+        0 -8px 25px
+        rgba(16,24,40,.10);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+}
+
+
+.mobile-bottom-bar-inner {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    align-items:
+        stretch;
+
+}
+
+
+.mobile-bottom-button {
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        2px;
+
+    border:
+        0;
+
+    background:
+        transparent;
+
+    color:
+        #667085;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    transition:
+        .2s ease;
+
+}
+
+
+.mobile-bottom-button .mobile-icon {
+
+    width:
+        28px;
+
+    height:
+        25px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        19px;
+
+    line-height:
+        1;
+
+}
+
+
+.mobile-bottom-button span:last-child {
+
+    line-height:
+        1.1;
+
+}
+
+
+.mobile-bottom-button:hover,
+.mobile-bottom-button:active {
+
+    color:
+        var(--red);
+
+}
+
+
+.mobile-bottom-button.active {
+
+    color:
+        var(--red);
+
+}
+
+
+.mobile-bottom-button.active::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        50%;
+
+    width:
+        28px;
+
+    height:
+        3px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        var(--red);
+
+    border-radius:
+        0 0 5px 5px;
+
+}
+
+
+/*
+   Make room for the bottom navigation
+   so content is not hidden behind it.
+*/
+
+@media (max-width: 700px) {
+
+    body {
+
+        padding-bottom:
+            68px;
+
+    }
+
+
+    .mobile-bottom-bar {
+
+        display:
+            block;
+
+    }
+
+
+    /*
+       Move the install banner above
+       the mobile navigation.
+    */
+
+    .install-banner {
+
+        bottom:
+            82px;
+
+    }
+
+}
+
+
+@media (max-width: 430px) {
+
+    .mobile-bottom-bar {
+
+        height:
+            64px;
+
+    }
+
+
+    body {
+
+        padding-bottom:
+            64px;
+
+    }
+
+
+    .mobile-bottom-button {
+
+        font-size:
+            9px;
+
+    }
+
+
+    .mobile-bottom-button .mobile-icon {
+
+        font-size:
+            18px;
+
+    }
+
+}
+
+/* =========================================================
+   DOWNLOAD APP BUTTON
+========================================================= */
+
+.download-app-btn {
+
+    min-height:
+        46px;
+
+    padding:
+        0 20px;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        8px;
+
+    border:
+        0;
+
+    border-radius:
+        7px;
+
+    background:
+        var(--red);
+
+    color:
+        white;
+
+    font-size:
+        13px;
+
+    font-weight:
+        800;
+
+    box-shadow:
+        0 8px 20px
+        rgba(214,40,40,.18);
+
+    transition:
+        .2s ease;
+
+}
+
+.download-app-btn:hover {
+
+    background:
+        var(--red-dark);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(214,40,40,.24);
+
+}
+
+
+.download-app-btn .download-icon {
+
+    font-size:
+        17px;
+
+    line-height:
+        1;
+
+}
+
+
+.hero-download {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    margin:
+        0 auto 24px;
+
+}
+
+
+@media (max-width: 700px) {
+
+    .hero-download {
+
+        margin-bottom:
+            22px;
+
+    }
+
+
+    .download-app-btn {
+
+        width:
+            100%;
+
+        max-width:
+            360px;
+
+    }
+
+}
+
 </style>
 
 </head>
@@ -2675,6 +3056,26 @@ footer {
                     together in one place.
 
                 </p>
+
+                <div class="hero-download">
+
+    <button
+        class="download-app-btn"
+        id="heroDownloadBtn"
+        onclick="installMyTown360()"
+    >
+
+        <span class="download-icon">
+            ↓
+        </span>
+
+        <span>
+            Download MyTown360
+        </span>
+
+    </button>
+
+</div>
 
 
                 <div
@@ -3452,48 +3853,104 @@ footer {
 
 
 <!-- =========================================================
-     INSTALL BANNER
+     MOBILE BOTTOM NAVIGATION
 ========================================================= -->
 
-<div
-    class="install-banner"
-    id="installBanner"
+<nav
+    class="mobile-bottom-bar"
+    id="mobileBottomBar"
+    aria-label="Mobile navigation"
 >
 
-    <div class="install-text">
-
-        <strong>
-            Install MyTown360
-        </strong>
-
-        <span>
-            Add MyTown360 to your device for quick access.
-        </span>
-
-    </div>
-
-
-    <div class="install-actions">
+    <div class="mobile-bottom-bar-inner">
 
         <button
-            class="install-button"
-            onclick="installMyTown360()"
+            class="mobile-bottom-button active"
+            data-section="home"
+            onclick="mobileNavigate('home')"
         >
-            Install
+
+            <span class="mobile-icon">
+                ⌂
+            </span>
+
+            <span>
+                Home
+            </span>
+
         </button>
 
 
         <button
-            class="install-close"
-            onclick="closeInstallBanner()"
+            class="mobile-bottom-button"
+            data-section="features"
+            onclick="mobileNavigate('features')"
         >
-            Later
+
+            <span class="mobile-icon">
+                ◉
+            </span>
+
+            <span>
+                Services
+            </span>
+
+        </button>
+
+
+        <button
+            class="mobile-bottom-button"
+            data-section="towns"
+            onclick="mobileNavigate('towns')"
+        >
+
+            <span class="mobile-icon">
+                ◈
+            </span>
+
+            <span>
+                Towns
+            </span>
+
+        </button>
+
+
+        <button
+            class="mobile-bottom-button"
+            data-section="about"
+            onclick="mobileNavigate('about')"
+        >
+
+            <span class="mobile-icon">
+                ℹ
+            </span>
+
+            <span>
+                About
+            </span>
+
+        </button>
+
+
+        <button
+            class="mobile-bottom-button"
+            data-section="select"
+            onclick="mobileNavigate('select')"
+        >
+
+            <span class="mobile-icon">
+                +
+            </span>
+
+            <span>
+                Select Town
+            </span>
+
         </button>
 
     </div>
 
-</div>
-
+</nav>
 
 <script>
 
@@ -3858,13 +4315,18 @@ window.addEventListener(
     "beforeinstallprompt",
     function (event) {
 
+        /*
+         * Keep the native installation prompt
+         * available for our Download button.
+         */
+
         event.preventDefault();
 
         deferredPrompt =
             event;
 
-        installBanner.classList.add(
-            "show"
+        console.log(
+            "MyTown360 installation is available."
         );
 
     }
@@ -3872,51 +4334,14 @@ window.addEventListener(
 
 
 /* =========================================================
-   INSTALL
+   INSTALL MYTOWN360
 ========================================================= */
 
 async function installMyTown360() {
 
-    if (deferredPrompt) {
-
-        deferredPrompt.prompt();
-
-
-        const result =
-            await deferredPrompt.userChoice;
-
-
-        if (
-            result.outcome ===
-            "accepted"
-        ) {
-
-            console.log(
-                "MyTown360 installation accepted."
-            );
-
-        }
-
-
-        deferredPrompt =
-            null;
-
-
-        installBanner.classList.remove(
-            "show"
-        );
-
-
-        return;
-
-    }
-
-
-    const isIOS =
-        /iphone|ipad|ipod/i.test(
-            navigator.userAgent
-        );
-
+    /*
+     * Already installed?
+     */
 
     const isStandalone =
         window.matchMedia(
@@ -3936,10 +4361,62 @@ async function installMyTown360() {
     }
 
 
+    /*
+     * Android / Chrome / Edge / supported browsers
+     */
+
+    if (deferredPrompt) {
+
+        deferredPrompt.prompt();
+
+
+        const result =
+            await deferredPrompt.userChoice;
+
+
+        console.log(
+            "MyTown360 installation result:",
+            result.outcome
+        );
+
+
+        if (
+            result.outcome ===
+            "accepted"
+        ) {
+
+            console.log(
+                "MyTown360 installation accepted."
+            );
+
+        }
+
+
+        deferredPrompt =
+            null;
+
+        return;
+
+    }
+
+
+    /*
+     * iPhone / iPad
+     */
+
+    const isIOS =
+        /iphone|ipad|ipod/i.test(
+            navigator.userAgent
+        );
+
+
     if (isIOS) {
 
         alert(
-            "To install MyTown360 on iPhone or iPad, tap Share and choose 'Add to Home Screen'."
+            "To install MyTown360 on iPhone or iPad:\n\n" +
+            "1. Tap the Share button.\n" +
+            "2. Select 'Add to Home Screen'.\n" +
+            "3. Tap 'Add'."
         );
 
         return;
@@ -3947,13 +4424,18 @@ async function installMyTown360() {
     }
 
 
+    /*
+     * Browser does not currently expose
+     * the native installation prompt.
+     */
+
     alert(
-        "If your browser supports installation, use the browser's Install App or Add to Home Screen option."
+        "MyTown360 can be installed from your browser. " +
+        "Look for 'Install MyTown360', 'Install App', " +
+        "or 'Add to Home Screen' in your browser menu."
     );
 
 }
-
-
 /* =========================================================
    APP INSTALLED
 ========================================================= */
@@ -4110,6 +4592,221 @@ console.log(
     "Your town, connected."
 );
 
+/* =========================================================
+   MOBILE BOTTOM NAVIGATION
+========================================================= */
+
+function mobileNavigate(section) {
+
+    /*
+       Close the existing mobile menu
+       if it is open.
+    */
+
+    mobileMenu.classList.remove(
+        "active"
+    );
+
+
+    /*
+       Select Town is an action rather
+       than a normal page section.
+    */
+
+    if (
+        section ===
+        "select"
+    ) {
+
+        focusTownSelector();
+
+        setMobileBottomActive(
+            "select"
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Find requested section.
+    */
+
+    const element =
+        document.getElementById(
+            section
+        );
+
+
+    if (!element) {
+
+        return;
+
+    }
+
+
+    /*
+       Scroll with a little space below
+       the fixed desktop/mobile header.
+    */
+
+    const navbarHeight =
+        window.innerWidth <= 700
+            ? 64
+            : 70;
+
+
+    const position =
+        element.getBoundingClientRect().top
+        +
+        window.pageYOffset
+        -
+        navbarHeight
+        -
+        8;
+
+
+    window.scrollTo({
+
+        top:
+            Math.max(
+                0,
+                position
+            ),
+
+        behavior:
+            "smooth"
+
+    });
+
+
+    setMobileBottomActive(
+        section
+    );
+
+}
+
+
+/* =========================================================
+   ACTIVE MOBILE BUTTON
+========================================================= */
+
+function setMobileBottomActive(section) {
+
+    document
+        .querySelectorAll(
+            ".mobile-bottom-button"
+        )
+        .forEach(
+            button => {
+
+                button.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    const activeButton =
+        document.querySelector(
+            `.mobile-bottom-button[data-section="${section}"]`
+        );
+
+
+    if (activeButton) {
+
+        activeButton.classList.add(
+            "active"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   UPDATE MOBILE NAV WHILE SCROLLING
+========================================================= */
+
+const mobileSections = [
+    "home",
+    "features",
+    "towns",
+    "about"
+];
+
+
+function updateMobileNavigation() {
+
+    /*
+       Only run this behaviour on mobile.
+    */
+
+    if (
+        window.innerWidth >
+        700
+    ) {
+
+        return;
+
+    }
+
+
+    const scrollPosition =
+        window.scrollY + 150;
+
+
+    let currentSection =
+        "home";
+
+
+    mobileSections.forEach(
+        sectionId => {
+
+            const section =
+                document.getElementById(
+                    sectionId
+                );
+
+
+            if (
+                section &&
+                section.offsetTop <=
+                    scrollPosition
+            ) {
+
+                currentSection =
+                    sectionId;
+
+            }
+
+        }
+    );
+
+
+    setMobileBottomActive(
+        currentSection
+    );
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateMobileNavigation,
+    {
+        passive:
+            true
+    }
+);
+
+
+window.addEventListener(
+    "resize",
+    updateMobileNavigation
+);
 </script>
 
 

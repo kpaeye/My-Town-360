@@ -1,13 +1,19 @@
+javascript
 /* =========================================================
    MYTOWN360 SERVICE WORKER
+   PWA / OFFLINE / INSTALL SUPPORT
 ========================================================= */
 
-const CACHE_NAME = "mytown360-v1";
+const CACHE_NAME = "mytown360-v2";
 
 const CORE_ASSETS = [
     "/",
     "/index.html",
-    "/manifest.json"
+    "/manifest.json",
+
+    /* PWA icons */
+    "/icons/icon-192.png",
+    "/icons/icon-512.png"
 ];
 
 
@@ -15,120 +21,143 @@ const CORE_ASSETS = [
    INSTALL
 ========================================================= */
 
-self.addEventListener(
-    "install",
-    event => {
+self.addEventListener("install", event => {
 
-        console.log(
-            "[MyTown360 SW] Installing..."
-        );
+    console.log("[MyTown360 SW] Installing:", CACHE_NAME);
 
-        event.waitUntil(
+    event.waitUntil(
 
-            caches.open(CACHE_NAME)
-                .then(cache => {
+        caches.open(CACHE_NAME)
+            .then(cache => {
 
-                    return cache.addAll(
-                        CORE_ASSETS
-                    );
+                return cache.addAll(CORE_ASSETS);
 
-                })
+            })
 
-        );
+    );
 
-        self.skipWaiting();
+    /*
+     * Activate the new service worker immediately.
+     */
+    self.skipWaiting();
 
-    }
-);
+});
 
 
 /* =========================================================
    ACTIVATE
 ========================================================= */
 
-self.addEventListener(
-    "activate",
-    event => {
+self.addEventListener("activate", event => {
 
-        console.log(
-            "[MyTown360 SW] Activating..."
-        );
+    console.log("[MyTown360 SW] Activating:", CACHE_NAME);
 
-        event.waitUntil(
+    event.waitUntil(
 
-            caches.keys()
-                .then(cacheNames => {
+        caches.keys()
+            .then(cacheNames => {
 
-                    return Promise.all(
+                return Promise.all(
 
-                        cacheNames
-                            .filter(
-                                cacheName =>
-                                    cacheName !== CACHE_NAME
-                            )
-                            .map(
-                                cacheName =>
-                                    caches.delete(
-                                        cacheName
-                                    )
-                            )
+                    cacheNames
+                        .filter(cacheName => {
 
-                    );
+                            return (
+                                cacheName.startsWith("mytown360-") &&
+                                cacheName !== CACHE_NAME
+                            );
 
-                })
+                        })
+                        .map(cacheName => {
 
-        );
+                            console.log(
+                                "[MyTown360 SW] Removing old cache:",
+                                cacheName
+                            );
 
-        self.clients.claim();
+                            return caches.delete(cacheName);
 
-    }
-);
+                        })
+
+                );
+
+            })
+            .then(() => {
+
+                /*
+                 * Take control of all open
+                 * MyTown360 pages immediately.
+                 */
+
+                return self.clients.claim();
+
+            })
+
+    );
+
+});
 
 
 /* =========================================================
    FETCH
 ========================================================= */
 
-self.addEventListener(
-    "fetch",
-    event => {
+self.addEventListener("fetch", event => {
 
-        const request =
-            event.request;
-
-        /*
-         * Only handle GET requests.
-         */
-
-        if (
-            request.method !== "GET"
-        ) {
-            return;
-        }
+    const request = event.request;
 
 
-        /*
-         * Navigation requests:
-         *
-         * Network first.
-         * If the network fails,
-         * return cached index.html.
-         */
+    /*
+     * Only handle GET requests.
+     */
 
-        if (
-            request.mode === "navigate"
-        ) {
+    if (request.method !== "GET") {
+        return;
+    }
 
-            event.respondWith(
 
-                fetch(request)
+    /*
+     * Ignore browser extensions
+     * and unsupported schemes.
+     */
 
-                    .then(response => {
+    if (
+        !request.url.startsWith("http://") &&
+        !request.url.startsWith("https://")
+    ) {
+        return;
+    }
 
-                        /*
-                         * Save the newest
-                         * version in cache.
-                         */
+
+    /* =====================================================
+       PAGE NAVIGATION
+    =====================================================
+
+       Network first.
+
+       This means visitors normally receive
+       the newest version of MyTown360.
+
+       If the network is unavailable,
+       the cached application opens.
+    */
+
+    if (request.mode === "navigate") {
+
+        event.respondWith(
+
+            fetch(request)
+
+                .then(response => {
+
+                    /*
+                     * Cache the newest index page.
+                     */
+
+                    if (
+                        response &&
+                        response.status === 200
+                    ) {
 
                         const responseClone =
                             response.clone();
@@ -143,76 +172,113 @@ self.addEventListener(
 
                             });
 
-                        return response;
-
-                    })
-
-                    .catch(() => {
-
-                        return caches.match(
-                            "/index.html"
-                        );
-
-                    })
-
-            );
-
-            return;
-
-        }
-
-
-        /*
-         * Other files:
-         *
-         * Cache first, then network.
-         */
-
-        event.respondWith(
-
-            caches.match(request)
-                .then(cachedResponse => {
-
-                    if (cachedResponse) {
-                        return cachedResponse;
                     }
 
-                    return fetch(request)
-                        .then(response => {
+                    return response;
 
-                            /*
-                             * Cache successful
-                             * same-origin responses.
-                             */
+                })
 
-                            if (
-                                response &&
-                                response.status === 200 &&
-                                response.type === "basic"
-                            ) {
+                .catch(() => {
 
-                                const responseClone =
-                                    response.clone();
+                    console.log(
+                        "[MyTown360 SW] Offline navigation"
+                    );
 
-                                caches.open(CACHE_NAME)
-                                    .then(cache => {
-
-                                        cache.put(
-                                            request,
-                                            responseClone
-                                        );
-
-                                    });
-
-                            }
-
-                            return response;
-
-                        });
+                    return caches.match(
+                        "/index.html"
+                    );
 
                 })
 
         );
 
+        return;
     }
-);
+
+
+    /* =====================================================
+       OTHER GET REQUESTS
+    =====================================================
+
+       Cache first.
+
+       If the file is not cached,
+       retrieve it from the network and
+       store a copy for future use.
+    */
+
+    event.respondWith(
+
+        caches.match(request)
+
+            .then(cachedResponse => {
+
+                if (cachedResponse) {
+                    return cachedResponse;
+                }
+
+
+                return fetch(request)
+
+                    .then(response => {
+
+                        /*
+                         * Only cache successful
+                         * same-origin responses.
+                         */
+
+                        if (
+                            response &&
+                            response.status === 200 &&
+                            response.type === "basic"
+                        ) {
+
+                            const responseClone =
+                                response.clone();
+
+                            caches.open(CACHE_NAME)
+                                .then(cache => {
+
+                                    cache.put(
+                                        request,
+                                        responseClone
+                                    );
+
+                                });
+
+                        }
+
+                        return response;
+
+                    });
+
+            })
+
+    );
+
+});
+
+
+/* =========================================================
+   MESSAGE HANDLER
+========================================================= */
+
+self.addEventListener("message", event => {
+
+    if (!event.data) {
+        return;
+    }
+
+
+    /*
+     * Allows the page to tell the
+     * service worker to activate immediately.
+     */
+
+    if (event.data.type === "SKIP_WAITING") {
+
+        self.skipWaiting();
+
+    }
+
+});

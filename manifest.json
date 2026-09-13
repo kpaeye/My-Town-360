@@ -1,3 +1,4 @@
+
 {
   "name": "MyTown360",
   "short_name": "MyTown360",
@@ -5,9 +6,18 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#061426",
-  "theme_color": "#00c2ff",
+  "background_color": "#ffffff",
+  "theme_color": "#061426",
   "orientation": "portrait",
+  "lang": "en",
+  "dir": "ltr",
+
+  "categories": [
+    "lifestyle",
+    "news",
+    "social"
+  ],
+
   "icons": [
     {
       "src": "icons/icon-192.png",
